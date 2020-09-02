@@ -21,7 +21,7 @@ const App = () => {
 				<ProtectedRoute exact path="/events" component={Events} />
 				<LoginRoute exact path="/login" component={Login} />
 				<LoginRoute exact path="/register" component={Register} />
-				<LoginRoute exact path="/userprofile" component={CreateUserProfile} />
+				<ProtectedRoute exact path="/userprofile" component={CreateUserProfile} />
 				<ProtectedRoute exact path="/:username" component={UserProfile} />
 			</Switch>
 		</div>

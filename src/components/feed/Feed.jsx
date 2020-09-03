@@ -1,8 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { GlobalContext } from '../Context/GlobalContext';
+
 
 const Feed = () => {
 	const history = useHistory();
+
+
+
+
 	return (
 		<div>
 			My posts :D

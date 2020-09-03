@@ -22,7 +22,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<Switch>
-				<ProtectedRoute exact path="/" component={Feed} />
+				<ProtectedRoute exact path="/feed" component={Feed} />
 				<ProtectedRoute exact path="/feed/createpost" component={CreatePost} />
 				<ProtectedRoute exact path="/feed/:id" component={SinglePost} />
 				<ProtectedRoute exact path="/events" component={Events} />

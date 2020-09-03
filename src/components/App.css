@@ -23723,6 +23723,22 @@ section {
 ::placeholder {
   font-style: italic;
 }
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.posts .card {
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 35rem;
+}
 /* 
 .card {
   min-width: 100%;

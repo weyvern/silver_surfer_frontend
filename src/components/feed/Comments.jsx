@@ -4,7 +4,14 @@ import Comment from './Comment';
 import AddComment from './AddComment';
 
 const Comments = () => {
-	const history = useHistory();
+  const history = useHistory();
+  
+
+  const renderComments = (comments) => {
+      return comments.map(comment => (<Comment comment={comment} key={comment._id} />));
+}
+
+
 	return (
 		<div>
             <hr class="my-5" />
@@ -17,7 +24,8 @@ const Comments = () => {
             <div class="mb-3 px-5 mx-5">
             
             <AddComment />
-			<Comment />
+            here comes the comment rendering
+            <Comment />
             </div>
             <div class="text-center mt-5">
                         <button
@@ -45,3 +53,6 @@ const Comments = () => {
 };
 
 export default Comments;
+
+
+/*{story.comments && renderComments(comments)}*/

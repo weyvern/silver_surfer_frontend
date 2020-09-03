@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Route } from 'react-router-dom';
 import DashboardLayout from '../layouts/DashboardLayout';
 import AuthLayout from '../layouts/AuthLayout';
 import LoginOption from '../auth/LoginOption';
+import AuthContext from '../../context/auth/authContext';
 
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDUyNTgyMjNjYTdmNjliMGVlYWUyYiIsImlhdCI6MTU5OTA1NTgzN30.j6v36_XZpEcaTV0tykh7FN-qFiOFX6bpWYBv-XSJ1ls';
-let isAuthenticated = true;
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-
-	useEffect(() => {
-		token === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDUyNTgyMjNjYTdmNjliMGVlYWUyYiIsImlhdCI6MTU5OTA1NTgzN30.j6v36_XZpEcaTV0tykh7FN-qFiOFX6bpWYBv-XSJ1ls'? isAuthenticated = true : isAuthenticated = false;
-		console.log('loggedin'+ isAuthenticated);
-		
-	}, [])
-
+	const authContext = useContext(AuthContext);
+	const { isAuthenticated } = authContext;
 	return isAuthenticated ? (
 		<Route
 			{...rest}

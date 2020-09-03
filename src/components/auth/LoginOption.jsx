@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LoginOption = () => {
-	
 	return (
 		<div className="d-flex">
 			<div className="col-lg-6 mb-lg-n10 mb-5 mb-lg-0 z-1">
@@ -21,9 +20,9 @@ const LoginOption = () => {
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 									className="feather feather-activity"
 								>
 									<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -55,9 +54,9 @@ const LoginOption = () => {
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 									className="feather feather-activity"
 								>
 									<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>

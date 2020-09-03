@@ -6,13 +6,8 @@ const AuthLayout = ({ children }) => {
 		<div id="AuthLayout" className="row">
 			<div className="col-lg-5 d-flex justify-content-center align-items-center">
 				<div className="container">
-					<h1 className="page-header-title">
-						Build your next project faster with SB UI Kit Pro
-					</h1>
-					<p className="page-header-text mb-5">
-						Welcome to SB UI Kit Pro, a toolkit for building beautiful web
-						interfaces, created by the developmet team at Start Bootstrap
-					</p>
+					<h1 className="page-header-title">Silver Surfer</h1>
+					<p className="page-header-text mb-5">Happiness is not about age</p>
 					<div>
 						<img className="img-fluid" src={Picture} />
 					</div>

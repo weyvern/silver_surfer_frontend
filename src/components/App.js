@@ -1,19 +1,22 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import ProtectedRoute from './auth/ProtectedRoute';
+import React, { useContext, useEffect } from 'react';
+import { Switch } from 'react-router-dom';
 import LoginRoute from './auth/LoginRoute';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import CreateUserProfile from './auth/CreateUserProfile';
-import UserProfile from './users/UserProfile';
+import ProtectedRoute from './auth/ProtectedRoute';
 import Feed from './feed/Feed';
+import UserProfile from './users/UserProfile';
 import Events from './events/Events';
-
+import AuthContext from '../context/auth/authContext';
 import './App.css';
 
-import { AuthProvider } from '../context/AuthState';
-
 const App = () => {
+	const authContext = useContext(AuthContext);
+	const { loadUser } = authContext;
+	useEffect(() => {
+		loadUser();
+	}, []);
 	return (
 		<div className="App">
 			<Switch>
@@ -21,7 +24,11 @@ const App = () => {
 				<ProtectedRoute exact path="/events" component={Events} />
 				<LoginRoute exact path="/login" component={Login} />
 				<LoginRoute exact path="/register" component={Register} />
-				<ProtectedRoute exact path="/userprofile" component={CreateUserProfile} />
+				<ProtectedRoute
+					exact
+					path="/userprofile"
+					component={CreateUserProfile}
+				/>
 				<ProtectedRoute exact path="/:username" component={UserProfile} />
 			</Switch>
 		</div>

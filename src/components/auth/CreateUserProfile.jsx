@@ -18,12 +18,7 @@ const CreateUserProfile = () => {
 		formData.append('file', e.target.files[0]);
 
 		try {
-			const config = {
-				headers: {
-					'x-Auth-token': token
-				}
-			};
-			const res = await axios.post('http://localhost:4000/', formData, config);
+			const res = await axios.post('http://localhost:4000/', formData);
 			setProfilePicture(res.data.location);
 		} catch (err) {
 			console.log(err);

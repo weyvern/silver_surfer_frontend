@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
+import placeholderPicture from '../../assets/img/feed/placeholder.jpg';
 
 
 import axios from "axios";
@@ -18,7 +19,7 @@ const CreatePost = () => {
     formData.append("file", e.target.files[0]);
     
     try {
-        const res = await axios.post("http://localhost:4000/" , formData)
+        const res = await axios.post("http://localhost:4000/", formData)
         setHeroPicture(res.data.location);
         console.log(res.data.location);
     } catch (err) {
@@ -37,7 +38,7 @@ const triggerInputFile = (e) => {
 
   const handleEditorChange = (content, editor) => {
     setBody(content);
-    setNewPost({ ...newPost, body: content, media: {} });
+    setNewPost({ ...newPost, body: content, media: heroPicture });
   };
 
   const handleSubmit = (e) => {
@@ -72,12 +73,12 @@ const triggerInputFile = (e) => {
 
   return (
     <div class="p-2">
-      <div class="row justify-content-center">
-        <div className="card w-100 rounded-lg text-dark">
+      <div class="row justify-content-center pb-4">
+        <div className="card rounded-lg text-dark">
           <div className="card-header py-4">Create A New Story</div>
           <div className="card-body">
             <form class="py-4">
-              <div className="form-group">
+              <div className="form-group py-2">
                 <label
                   className="small text-gray-600"
                   for="leadCapTitle"
@@ -94,7 +95,7 @@ const triggerInputFile = (e) => {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group py-2">
                 <label
                   className="small text-gray-600"
                   for="leadCapShortDescription"
@@ -112,11 +113,24 @@ const triggerInputFile = (e) => {
                   required
                 />
               </div>
-              <div className="form-row justify-content-center">
-                            <div className="avatar avatar-xxl mx-2"><img className="avatar-img " src="hez" style={{height: "100%", width: "100%", display: "block", marginLeft: "auto", marginRight: "auto"}} /></div>
-                            <button onClick={triggerInputFile} className="btn btn-primary btn-marketing rounded-pill my-5 mx-2">Upload Picture</button>
-                            <input ref={uploadRef} type="file" name="media" accept="image/*" style={{display: "none"}} onChange={(e) => uploadPicture(e)}/>
+
+
+              
+              <div className="form-group py-2"> 
+              <label
+                  className="small text-gray-600"
+                  name="media"
+                >
+                  Hero Image
+                </label>
+                <div className="form-row justify-content-center">
+                  <div className="mx-2"><img className="img-fluid mb-2" src={heroPicture ? heroPicture : placeholderPicture} style={{height: "100%", maxWidth: "680px", width: "100%", display: "block", marginLeft: "auto", marginRight: "auto"}} /></div>
+                  <button onClick={triggerInputFile} className="btn btn-primary btn-marketing rounded-pill mx-2 align-self-center">Upload Picture</button>
+                  <input ref={uploadRef} type="file" name="media" accept="image/*" style={{display: "none"}} onChange={(e) => uploadPicture(e)}/>
+                  </div>
               </div>
+
+              <div className="form-group py-2">
               <label
                 className="small text-gray-600"
                 for="leadCapContent"
@@ -129,7 +143,7 @@ const triggerInputFile = (e) => {
                 initialValue="<p>This is the initial content of the editor</p>"
                 init={{
                   height: 500,
-                  width: 900,
+                  width: "100%",
                   menubar: true,
                   plugins: [
                     "advlist autolink lists link image charmap print preview anchor",
@@ -179,6 +193,7 @@ const triggerInputFile = (e) => {
                 }}
                 onEditorChange={handleEditorChange}
               />
+              </div>
               <button
                 className="btn btn-secondary btn-marketing btn-block rounded-pill mt-4"
                 type="submit"
@@ -192,7 +207,7 @@ const triggerInputFile = (e) => {
       </div>
 
       <button
-        className="btn btn-primary btn-marketing rounded-pill"
+        className="btn btn-primary btn-lg btn-marketing rounded-pill"
         onClick={() => history.goBack()}
       >
         <svg

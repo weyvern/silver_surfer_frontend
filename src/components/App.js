@@ -6,6 +6,8 @@ import Register from './auth/Register';
 import CreateUserProfile from './auth/CreateUserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Feed from './feed/Feed';
+import SinglePost from './feed/SinglePost';
+import CreatePost from './feed/CreatePost';
 import UserProfile from './users/UserProfile';
 import Events from './events/Events';
 import AuthContext from '../context/auth/authContext';
@@ -21,6 +23,8 @@ const App = () => {
 		<div className="App">
 			<Switch>
 				<ProtectedRoute exact path="/" component={Feed} />
+				<ProtectedRoute exact path="/feed/createpost" component={CreatePost} />
+				<ProtectedRoute exact path="/feed/:id" component={SinglePost} />
 				<ProtectedRoute exact path="/events" component={Events} />
 				<LoginRoute exact path="/login" component={Login} />
 				<LoginRoute exact path="/register" component={Register} />

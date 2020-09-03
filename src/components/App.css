@@ -650,8 +650,8 @@ pre code {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  margin-right: -1.5rem;
-  margin-left: -1.5rem;
+  /*margin-right: -1.5rem;
+  margin-left: -1.5rem;*/
 }
 
 .no-gutters {
@@ -23724,6 +23724,17 @@ section {
   font-style: italic;
 }
 
+#SideNavbar a:hover, #SideNavbar a:focus{
+  color: red !important;
+  text-decoration: none;
+  background-color: #eff1f3;
+}
+
+#SideNavbar a.active, #SideNavbar a:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #884592;
+}
 
 
 @-webkit-keyframes noise-anim {

@@ -23,7 +23,8 @@ const CreateUserProfile = () => {
                 }
             }
             const res = await axios.post("http://localhost:4000/" , formData, config)
-            setProfilePicture(res.data.location)
+            setProfilePicture(res.data.location);
+            console.log(res.data.location);
         } catch (err) {
             console.log(err)
         }
@@ -35,7 +36,6 @@ const CreateUserProfile = () => {
     }
 
     const handleChange = (e) => {
-        console.log(e.target)
         setNewUserProfile({...newUserProfile, [e.target.name]: e.target.value});
     }
 
@@ -51,12 +51,28 @@ const CreateUserProfile = () => {
 
         if(!name || !lastName || !nemail || !password) {
             return window.alert("Empty fields: Please fill out every field.");
-        }
+        }*/
 
-        let UserProfile = newUserProfile;
-        createNewUser(UserProfile);
-        
-        setNewUserProfile({});*/
+        setNewUserProfile({...newUserProfile, picture_profile: {profilePicture}});
+        sendUserProfileData(newUserProfile);
+    }
+
+    const sendUserProfileData = async (newUserProfile) => {
+        try {
+            const config = {
+                headers: {
+                    "x-Auth-token": token
+                }
+            }
+            const res = await axios.post('http://localhost:5000/api/v1/userprofiles', newUserProfile, config);
+            setNewUserProfile({});
+        }
+        catch(err) {
+            //details is an array --> go trhough all keys and pull out error messages
+            console.log(err.response.data.details[0]);
+            alert("Pleas provide valid login credentials or create an account");
+            //form.current.reset();
+        }
     }
     
     return (
@@ -66,7 +82,7 @@ const CreateUserProfile = () => {
                 <div className="card-body">
                     <form class="py-4">
                         <div className="form-row justify-content-center">
-                            <div className="avatar avatar-xxl mx-2"><img className="avatar-img " src={profilePicture ? profilePicture : userPicture} /></div>
+                            <div className="avatar avatar-xxl mx-2"><img className="avatar-img " src={profilePicture ? profilePicture : userPicture} style={{height: "100%", width: "100%", display: "block", marginLeft: "auto", marginRight: "auto"}} /></div>
                             <button onClick={triggerInputFile} className="btn btn-primary btn-marketing rounded-pill my-5 mx-2">Upload Picture</button>
                             <input ref={uploadRef} type="file" name="profile_picture" accept="image/*" style={{display: "none"}} onChange={(e) => uploadPicture(e)}/>
                         </div>

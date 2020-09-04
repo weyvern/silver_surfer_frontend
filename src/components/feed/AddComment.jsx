@@ -38,10 +38,10 @@ const AddComment = () => {
   };
 
   return (
-    <div class="card">
-      <div class="card-header">Add a Comment</div>
-      <div class="card-body">
-        <div class="d-flex align-items-center">
+    <div className="card">
+      <div className="card-header">Add a Comment</div>
+      <div className="card-body">
+        <div className="d-flex align-items-center">
           <div className="avatar avatar-xl mx-2">
             <img
               className="avatar-img"
@@ -50,7 +50,7 @@ const AddComment = () => {
           </div>
 
           <form
-            class="d-flex"
+            className="d-flex"
             style={{ width: "100%" }}
             onSubmit={handleSubmit}
           >

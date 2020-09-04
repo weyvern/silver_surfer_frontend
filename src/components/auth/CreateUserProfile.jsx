@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from 'react';
 import axios from 'axios';
 import userPicture from '../../assets/img/login/placeholder.png';
-import GlobalContext from '../Context/GlobalContext';
+import GlobalContext from '../../context/global/globalContext';
 
 const CreateUserProfile = () => {
 	const [newUserProfile, setNewUserProfile] = useState({});

@@ -13,63 +13,63 @@ const DashboardLayout = ({ children }) => {
 		toggle.current.classList.toggle('collapsed');
 	};
 	return (
-		<div class="wrapper">
+		<div className="wrapper">
 			<nav
 				id="sidebar"
 				ref={sideBar}
 				className="bg-indigo-soft d-flex flex-column justify-content-between"
 			>
-				<ul class="list-unstyled components">
+				<ul className="list-unstyled components">
 					<li>
 						<Link to="/">
 							<div className="card m-2">
-								<i class="fas fa-home fa-5x mx-auto my-3"></i>
+								<i className="fas fa-home fa-5x mx-auto my-3"></i>
 							</div>
 						</Link>
 					</li>
 					<li>
 						<Link to="/reminders">
 							<div className="card m-2">
-								<i class="fas fa-notes-medical fa-5x mx-auto my-3"></i>
+								<i className="fas fa-notes-medical fa-5x mx-auto my-3"></i>
 							</div>
 						</Link>
 					</li>
 					<li>
 						<Link to="/events">
 							<div className="card m-2">
-								<i class="far fa-calendar-alt fa-5x mx-auto my-3"></i>
+								<i className="far fa-calendar-alt fa-5x mx-auto my-3"></i>
 							</div>
 						</Link>
 					</li>
 					<li>
 						<Link to="/chat">
 							<div className="card m-2">
-								<i class="far fa-comments fa-5x mx-auto my-3"></i>
+								<i className="far fa-comments fa-5x mx-auto my-3"></i>
 							</div>
 						</Link>
 					</li>
 					<li>
 						<Link to="/">
 							<div className="card m-2">
-								<i class="fab fa-readme fa-5x mx-auto my-3"></i>
+								<i className="fab fa-readme fa-5x mx-auto my-3"></i>
 							</div>
 						</Link>
 					</li>
 				</ul>
-				<ul class="list-unstyled components">
+				<ul className="list-unstyled components">
 					<li onClick={logoutUser}>
 						<div className="card m-2 text-light_purple">
-							<i class="fas fa-sign-out-alt fa-5x mx-auto my-3"></i>
+							<i className="fas fa-sign-out-alt fa-5x mx-auto my-3"></i>
 						</div>
 					</li>
 				</ul>
 			</nav>
 			<div id="content" className="bg-light w-100">
-				<nav class="navbar" onClick={toggleSideBar}>
+				<nav className="navbar" onClick={toggleSideBar}>
 					<button type="button" id="sidebarCollapse" ref={toggle}>
-						<span class="icon-bar top-bar"></span>
-						<span class="icon-bar middle-bar"></span>
-						<span class="icon-bar bottom-bar"></span>
+						<span className="icon-bar top-bar"></span>
+						<span className="icon-bar middle-bar"></span>
+						<span className="icon-bar bottom-bar"></span>
 					</button>
 				</nav>
 				{children}

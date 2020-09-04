@@ -14,20 +14,20 @@ const Comments = () => {
 
 	return (
 		<div>
-            <hr class="my-5" />
-            <div class="d-flex align-items-center mb-3">
-            <i class="fas fa-comment fa-fw"></i>
-            <p class="m-0 mr-2">story.comments.length</p>
-            <h2 class="m-0" id="Comments">Comments</h2>
+            <hr className="my-5" />
+            <div className="d-flex align-items-center mb-3">
+            <i className="fas fa-comment fa-fw"></i>
+            <p className="m-0 mr-2">story.comments.length</p>
+            <h2 className="m-0" id="Comments">Comments</h2>
             </div>
            
-            <div class="mb-3 px-5 mx-5">
+            <div className="mb-3 px-5 mx-5">
             
             <AddComment />
             here comes the comment rendering
             <Comment />
             </div>
-            <div class="text-center mt-5">
+            <div className="text-center mt-5">
                         <button
                           className="btn btn-primary btn-marketing rounded-pill"
                           onClick={() => history.goBack()}

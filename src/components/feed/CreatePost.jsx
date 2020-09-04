@@ -77,12 +77,12 @@ const CreatePost = () => {
 
 
   return (
-    <div class="p-2">
-      <div class="row justify-content-center pb-4">
+    <div className="p-2">
+      <div className="row justify-content-center pb-4">
         <div className="card rounded-lg text-dark">
           <div className="card-header py-4">Create A New Story</div>
           <div className="card-body">
-            <form class="py-4">
+            <form className="py-4">
               <div className="form-group py-2">
                 <label
                   className="small text-gray-600"

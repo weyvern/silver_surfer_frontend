@@ -39,7 +39,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -63,7 +63,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -86,7 +86,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -102,7 +102,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -126,7 +126,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -150,7 +150,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -166,7 +166,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 	
@@ -183,7 +183,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -207,7 +207,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -230,7 +230,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 
@@ -253,7 +253,7 @@ const GlobalState = props => {
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			consolelog(err);
+			console.log(err);
 		}
 	};
 

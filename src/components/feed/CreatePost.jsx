@@ -20,19 +20,23 @@ const CreatePost = () => {
 	const uploadRef = useRef(null);
     console.log(user.id)
 
-  const uploadPicture =  async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", e.target.files[0]);
-    
-    try {
-        const res = await axios.post("http://localhost:4000/", formData)
-        setHeroPicture(res.data.location);
-        console.log(res.data.location);
-    } catch (err) {
-        console.log(err)
-    }
-}
+
+	const uploadPicture = async e => {
+		e.preventDefault();
+		const formData = new FormData();
+		formData.append('file', e.target.files[0]);
+
+		try {
+			const res = await axios.post(
+				'https://silver-surfer-file.herokuapp.com/',
+				formData
+			);
+			setHeroPicture(res.data.location);
+			console.log(res.data.location);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	const triggerInputFile = e => {
 		e.preventDefault();
@@ -67,7 +71,6 @@ const CreatePost = () => {
     //setNewPost({ });
 		/*return false;*/
 	};
-
 
   return (
     <div className="p-2">
@@ -156,10 +159,6 @@ const CreatePost = () => {
                   content_style:
                     "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                   images_upload_url: "http://localhost:4000",
-
-              
-            
-
 									images_upload_handler: imageUploadHandler
 								}}
 								onEditorChange={handleEditorChange}

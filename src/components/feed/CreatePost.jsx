@@ -18,7 +18,10 @@ const CreatePost = () => {
 		formData.append('file', e.target.files[0]);
 
 		try {
-			const res = await axios.post('http://192.168.191.24:4000/', formData);
+			const res = await axios.post(
+				'https://silver-surfer-file.herokuapp.com/',
+				formData
+			);
 			setHeroPicture(res.data.location);
 			console.log(res.data.location);
 		} catch (err) {
@@ -116,8 +119,7 @@ const CreatePost = () => {
 							<div className="form-row justify-content-center">
 								<div className="avatar avatar-xxl mx-2">
 									<img
-										className="avatar-img "
-										src="hez"
+										src={heroPicture}
 										style={{
 											height: '100%',
 											width: '100%',

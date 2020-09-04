@@ -15,6 +15,11 @@
 	transition: all 0.3s;
 }
 
+#content {
+	overflow-y: scroll;
+	height: 100vh;
+}
+
 #sidebar.active {
 	margin-left: -150px;
 }

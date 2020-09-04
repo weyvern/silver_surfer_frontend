@@ -5,11 +5,12 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import CreateUserProfile from './auth/CreateUserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
-import Feed from './feed/Feed';
-import SinglePost from './feed/SinglePost';
+import PostList from './feed/PostList';
+import Post from './feed/Post';
 import CreatePost from './feed/CreatePost';
 import UserProfile from './users/UserProfile';
 import Events from './events/Events';
+import Dashboard from './dashboard/Dashboard';
 import AuthContext from '../context/auth/authContext';
 import './App.css';
 
@@ -22,10 +23,11 @@ const App = () => {
 	return (
 		<div className="App">
 			<Switch>
-				<ProtectedRoute exact path="/" component={Feed} />
+				<ProtectedRoute exact path="/feed" component={PostList} />
 				<ProtectedRoute exact path="/feed/createpost" component={CreatePost} />
-				<ProtectedRoute exact path="/feed/:id" component={SinglePost} />
+				<ProtectedRoute exact path="/feed/:id" component={Post} />
 				<ProtectedRoute exact path="/events" component={Events} />
+				<ProtectedRoute exact path="/" component={Dashboard} />
 				<LoginRoute exact path="/login" component={Login} />
 				<LoginRoute exact path="/register" component={Register} />
 				<ProtectedRoute

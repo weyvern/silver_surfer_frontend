@@ -2,14 +2,10 @@ import React, { useState, useContext, useRef } from 'react';
 import axios from 'axios';
 import userPicture from '../../assets/img/login/placeholder.png';
 
-//import { GlobalContext } from '../Context/GlobalState';
-let token =
-	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDUyNTgyMjNjYTdmNjliMGVlYWUyYiIsImlhdCI6MTU5OTA1NTgzN30.j6v36_XZpEcaTV0tykh7FN-qFiOFX6bpWYBv-XSJ1ls';
-
 const CreateUserProfile = () => {
 	const [newUserProfile, setNewUserProfile] = useState({});
 	const [profilePicture, setProfilePicture] = useState();
-	//const { createNewUserProfile } = useContext(GlobalContext);
+	
 	const uploadRef = useRef(null);
 
 	const uploadPicture = async e => {
@@ -18,12 +14,7 @@ const CreateUserProfile = () => {
 		formData.append('file', e.target.files[0]);
 
 		try {
-			const config = {
-				headers: {
-					'x-Auth-token': token
-				}
-			};
-			const res = await axios.post('http://localhost:4000/', formData, config);
+			const res = await axios.post('http://localhost:4000/', formData);
 			setProfilePicture(res.data.location);
 		} catch (err) {
 			console.log(err);
@@ -53,11 +44,11 @@ const CreateUserProfile = () => {
         if(!name || !lastName || !nemail || !password) {
             return window.alert("Empty fields: Please fill out every field.");
         }
-
+*/
         let UserProfile = newUserProfile;
-        createNewUser(UserProfile);
+        //postUserProfile(UserProfile);
         
-        setNewUserProfile({});*/
+        setNewUserProfile({});
 	};
 
 	return (

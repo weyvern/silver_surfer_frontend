@@ -8207,6 +8207,7 @@ input[type=button].btn-block {
   padding: 1.35rem;
 }
 
+
 .card-title {
   margin-bottom: 1rem;
 }
@@ -23650,14 +23651,14 @@ section {
   margin-right: 0.5rem;
 }
 .single-post .single-post-meta .single-post-meta-img {
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 3rem;
+  width: 3rem;
   border-radius: 100%;
   margin-right: 0.5rem;
   flex-shrink: 0;
 }
 .single-post .single-post-meta .single-post-meta-details .single-post-meta-details-name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1;
   margin-bottom: 0.25rem;
 }
@@ -23666,7 +23667,7 @@ section {
   line-height: 1;
 }
 .single-post .single-post-meta-links {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .single-post .single-post-meta-links a {
   color: #c5c9cc;
@@ -23724,6 +23725,28 @@ section {
   font-style: italic;
 }
 
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.posts .card {
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 35rem;
+  height: 20rem;
+}
+
+/* 
+.card {
+  min-width: 100%;
+  width: 80rem;
+} */
 
 
 @-webkit-keyframes noise-anim {

@@ -1,0 +1,17 @@
+export const STORIES_LOADED = 'STORIES_LOADED';
+export const STORY_LOADED = 'STORY_LOADED';
+export const STORY_POSTED = 'STORY_POSTED';
+export const STORY_EDITED = 'STORY_EDITED';
+export const STORY_DELETED = 'STORY_DELETED';
+
+
+export const COMMENT_POSTED = 'COMMENT_POSTED';
+export const COMMENT_EDITED = 'COMMENT_EDITED';
+export const COMMENT_DELETED = 'COMMENT_DELETED';
+
+/*
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';*/

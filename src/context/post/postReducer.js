@@ -1,5 +1,6 @@
 import {
 	STORIES_LOADED,
+	STORY_LOADED,
 	STORY_POSTED,
 	STORY_EDITED,
 	STORY_DELETED,
@@ -12,6 +13,12 @@ export default (state, action) => {
 	switch (action.type) {
         
 		case STORIES_LOADED:
+			return {
+				...state,
+				loading: false,
+				stories: action.payload
+			};
+			case STORY_LOADED:
 			return {
 				...state,
 				loading: false,

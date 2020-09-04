@@ -23,10 +23,8 @@ const PostListItem = ({ story }) => {
         </div>
         <div className="col-lg-7">
           <div className="card-body h-100 d-flex flex-column justify-content-between">
-            <div className="py-2">
-              <h5 className="card-title d-inline-block text-truncate">{story.title}</h5>
-              <p className="card-text d-inline-block text-truncate">{story.short_description}</p>
-            </div>
+            <h5 className="card-title text-truncate">{story.title}</h5>
+            <p className="" style={{whiteSpace: "normal", overflow: "hidden", textOverflow: "ellipsis"}}>{story.short_description}</p>
           <div>
           <hr />
             <div className="post-preview-meta justify-content-between">
@@ -50,9 +48,9 @@ const PostListItem = ({ story }) => {
                   <i class="fas fa-comment fa-fw"></i>
                 </a>
                 <p class="m-0 mr-2">{story.comments.length}</p>
-                <a href="#!">
+               
                   <i class="fas fa-thumbs-up fa-fw"></i>
-                </a>
+              
                 <p class="m-0">{story.likes.length}</p>
               </div>
             </div>

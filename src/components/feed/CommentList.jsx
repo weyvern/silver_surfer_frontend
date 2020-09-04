@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 import Comment from './Comment';
 import AddComment from './AddComment';
 
-const CommentList = () => {
+const CommentList = ({...data}) => {
   const history = useHistory();
-  
+  const {comments} = data;
 
   const renderComments = (comments) => {
       return comments.map(comment => (<Comment comment={comment} key={comment._id} />));
@@ -17,15 +17,13 @@ const CommentList = () => {
             <hr className="my-5" />
             <div className="d-flex align-items-center mb-3">
             <i className="fas fa-comment fa-fw"></i>
-            <p className="m-0 mr-2">story.comments.length</p>
+            <p className="m-0 mr-2">{comments.length}</p>
             <h2 className="m-0" id="Comments">Comments</h2>
             </div>
            
             <div className="mb-3 px-5 mx-5">
-            
             <AddComment />
-            here comes the comment rendering
-            <Comment />
+            {comments && (renderComments(comments))}
             </div>
             <div className="text-center mt-5">
                         <button

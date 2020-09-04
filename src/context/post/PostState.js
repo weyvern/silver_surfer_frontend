@@ -4,6 +4,7 @@ import PostContext from './postContext';
 import PostReducer from './postReducer';
 import {
 	STORIES_LOADED,
+	STORY_LOADED,
 	STORY_POSTED,
 	STORY_EDITED,
 	STORY_DELETED,
@@ -31,6 +32,23 @@ const PostState = props => {
 			);
 			dispatch({
 				type: STORIES_LOADED,
+				payload: res.data
+			});
+		} catch (err) {
+			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
+			console.log(err);
+		}
+	};
+
+
+	// get Story
+	const getStory = async (id) => {
+		try {
+			const res = await axios.get(
+				`http://localhost:5000/api/v1/stories/${id}`
+			);
+			dispatch({
+				type: STORY_LOADED,
 				payload: res.data
 			});
 		} catch (err) {
@@ -173,6 +191,7 @@ const PostState = props => {
 				loading: state.loading,
 				error: state.error,
 				stories: state.stories,
+				getStory,
 				getStories,
 				postStory,
 				editStory,

@@ -23,7 +23,7 @@ const PostList = () => {
         /*<img src={spinner} alt='loading' className='d-block mx-auto' />*/
         <p>I am loading</p>
       );
-    return data.map((story) => <PostListItem story={story} />);
+    return data.map((story) => <PostListItem story={story} key={story._id} />);
   };
 
   return (

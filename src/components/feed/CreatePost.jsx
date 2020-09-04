@@ -1,19 +1,24 @@
 
 import placeholderPicture from '../../assets/img/feed/placeholder.jpg';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import PostContext from "../../context/post/postContext";
+import AuthContext from "../../context/auth/authContext";
 import { Editor } from '@tinymce/tinymce-react';
 import imageUploadHandler from '../../utils/imageUploadHandler';
 
 import axios from 'axios';
 const CreatePost = () => {
+  const { postStory } = useContext(PostContext);
+  const { user } = useContext(AuthContext);
+ 
 	const history = useHistory();
 	const [body, setBody] = useState({});
 	const [newPost, setNewPost] = useState({});
 	const [heroPicture, setHeroPicture] = useState();
 
 	const uploadRef = useRef(null);
-
+    console.log(user.id)
 
   const uploadPicture =  async (e) => {
     e.preventDefault();
@@ -47,32 +52,20 @@ const CreatePost = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		setNewPost({ ...newPost, body: body });
-		console.log(newPost);
+    //setNewPost({ ...newPost, body: body });
+    setNewPost({ ...newPost, body: body, status: 'published', "author_id": user.id});
+	
 		if (!newPost.title || !newPost.body) {
 			return window.alert(
 				'Please fill out all fields before publishing your post'
 			);
 		}
 
-		setNewPost({ ...newPost, status: 'published' });
-		sendPostData(newPost);
+    
+    console.log(newPost);
+    postStory(newPost);
+    //setNewPost({ });
 		/*return false;*/
-	};
-
-	const sendPostData = async newPost => {
-		try {
-			const res = await axios.post(
-				'http://localhost:5000/api/v1/stories',
-				newPost
-			);
-			setNewPost({});
-		} catch (err) {
-			//details is an array --> go trhough all keys and pull out error messages
-			console.log(err.response.data.details[0]);
-			alert('Sth. went wrong');
-			//form.current.reset();
-		}
 	};
 
 
@@ -86,7 +79,7 @@ const CreatePost = () => {
               <div className="form-group py-2">
                 <label
                   className="small text-gray-600"
-                  for="leadCapTitle"
+                  htmlFor="leadCapTitle"
                   name="title"
                 >
                   Title
@@ -103,7 +96,7 @@ const CreatePost = () => {
               <div className="form-group py-2">
                 <label
                   className="small text-gray-600"
-                  for="leadCapShortDescription"
+                  htmlFor="leadCapShortDescription"
                   name="short_description"
                 >
                   Short Description
@@ -138,7 +131,7 @@ const CreatePost = () => {
               <div className="form-group py-2">
               <label
                 className="small text-gray-600"
-                for="leadCapContent"
+                htmlFor="leadCapContent"
                 name="content"
               >
                 Content

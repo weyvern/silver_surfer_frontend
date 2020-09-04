@@ -1,12 +1,11 @@
 import React, { useState, useContext, useRef } from 'react';
 import axios from 'axios';
 import userPicture from '../../assets/img/login/placeholder.png';
-import GlobalContext from '../../context/post/postContext';
 
 const CreateUserProfile = () => {
 	const [newUserProfile, setNewUserProfile] = useState({});
 	const [profilePicture, setProfilePicture] = useState();
-	const { postUserProfile } = useContext(GlobalContext);
+	
 	const uploadRef = useRef(null);
 
 	const uploadPicture = async e => {
@@ -47,7 +46,7 @@ const CreateUserProfile = () => {
         }
 */
         let UserProfile = newUserProfile;
-        postUserProfile(UserProfile);
+        //postUserProfile(UserProfile);
         
         setNewUserProfile({});
 	};

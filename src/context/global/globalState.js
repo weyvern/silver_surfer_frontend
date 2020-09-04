@@ -262,8 +262,9 @@ const GlobalState = props => {
 		<GlobalContext.Provider
 			value={{
 				loading: state.loading,
-				user: state.user,
+				//user: state.user,
 				error: state.error,
+				stories: state.stories,
 				getStories,
 				postStory,
 				editStory,

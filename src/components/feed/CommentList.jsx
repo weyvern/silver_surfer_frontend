@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Comment from './Comment';
 import AddComment from './AddComment';
 
-const Comments = () => {
+const CommentList = () => {
   const history = useHistory();
   
 
@@ -52,7 +52,7 @@ const Comments = () => {
 	);
 };
 
-export default Comments;
+export default CommentList;
 
 
 /*{story.comments && renderComments(comments)}*/

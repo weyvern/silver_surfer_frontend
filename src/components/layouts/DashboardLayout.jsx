@@ -49,7 +49,7 @@ const DashboardLayout = ({ children }) => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/feed">
 							<div className="card m-2">
 								<i className="fab fa-readme fa-5x mx-auto my-3"></i>
 							</div>

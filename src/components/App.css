@@ -23738,7 +23738,9 @@ section {
   overflow: hidden;
   white-space: nowrap;
   width: 35rem;
+  height: 20rem;
 }
+
 /* 
 .card {
   min-width: 100%;

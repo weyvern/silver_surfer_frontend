@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import GlobalContext from "../../context/global/globalContext";
-import SinglePost from "./SinglePost";
+import PostContext from "../../context/post/postContext";
+import PostListItem from "./PostListItem";
 
-const Feed = () => {
+const PostList = () => {
   const history = useHistory();
   const {
     stories: { data },
     getStories,
     loading,
-  } = useContext(GlobalContext);
+  } = useContext(PostContext);
 
   useEffect(() => {
     getStories();
@@ -23,17 +23,15 @@ const Feed = () => {
         /*<img src={spinner} alt='loading' className='d-block mx-auto' />*/
         <p>I am loading</p>
       );
-    return data.map((story) => (
-     <SinglePost story={story}/>
-    ));
+    return data.map((story) => <PostListItem story={story} />);
   };
 
   return (
     <section id="#feed">
       <div className="posts">{renderPosts()}</div>
-
-      <button
-        className="btn btn-primary btn-marketing rounded-pill"
+	  <div class="text-center">
+	  <button
+        className="btn btn-primary btn-marketing rounded-pill m-4"
         onClick={() => history.goBack()}
       >
         <svg
@@ -51,8 +49,10 @@ const Feed = () => {
         </svg>{" "}
         Back
       </button>
+	  </div>
+     
     </section>
   );
 };
 
-export default Feed;
+export default PostList;

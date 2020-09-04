@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import Comments from "./Comments";
+import CommentList from "./CommentList";
 
-const PostFullPage = () => {
+const Post = () => {
   //const { stories: {data}, getStories, loading } = useContext(GlobalContext);
   const history = useHistory();
-  const {id} = useParams();
+  const { id } = useParams();
 
   /*
   const renderCategories = (categories) => {
@@ -86,7 +86,7 @@ const PostFullPage = () => {
                   </div>
                 </div>
 
-                <Comments />
+                <CommentList />
               </div>
             </div>
 
@@ -107,4 +107,4 @@ const PostFullPage = () => {
   );
 };
 
-export default PostFullPage;
+export default Post;

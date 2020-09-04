@@ -1,14 +1,18 @@
 .wrapper {
 	display: flex;
 	width: 100%;
-	align-items: stretch;
 }
 
 #sidebar {
 	min-width: 150px;
 	max-width: 150px;
-	min-height: 100vh;
+	height: 100vh;
 	transition: all 0.3s;
+}
+
+#content {
+	overflow-y: scroll;
+	height: 100vh;
 }
 
 #sidebar.active {

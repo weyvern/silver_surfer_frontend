@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import GlobalContext from './globalContext';
-import GlobalReducer from './globalReducer';
+import PostContext from './postContext';
+import PostReducer from './postReducer';
 import {
 	STORIES_LOADED,
 	STORY_POSTED,
@@ -9,15 +9,11 @@ import {
 	STORY_DELETED,
 	COMMENT_POSTED,
 	COMMENT_EDITED,
-	COMMENT_DELETED,
-	USERPROFILES_LOADED,
-	USERPROFILE_POSTED,
-	USERPROFILE_EDITED,
-	FRIEND_UPDATED,
+	COMMENT_DELETED
 } from './types';
 
 
-const GlobalState = props => {
+const PostState = props => {
 	const initialState = {
 		stories: [],
 		loading: true,
@@ -25,7 +21,7 @@ const GlobalState = props => {
 		error: null
 	};
 
-	const [state, dispatch] = useReducer(GlobalReducer, initialState);
+	const [state, dispatch] = useReducer(PostReducer, initialState);
 
 	// get Stories
 	const getStories = async () => {
@@ -169,100 +165,12 @@ const GlobalState = props => {
 			console.log(err);
 		}
 	};
-	
-
-	// get User Profiles
-	const getUserProfiles = async () => {
-		try {
-			const res = await axios.get(
-				'http://localhost:5000/api/v1/userprofiles'
-			);
-			dispatch({
-				type: USERPROFILES_LOADED,
-				payload: res.data
-			});
-		} catch (err) {
-			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			console.log(err);
-		}
-	};
-
-
-	// post User Profile
-	const postUserProfile = async (newUserProfile) => {
-		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
-			const res = await axios.post(
-				'http://localhost:5000/api/v1/userprofiles',
-				newUserProfile,
-				config
-			);
-			dispatch({
-				type: USERPROFILE_POSTED,
-				payload: res.data
-			});
-		} catch (err) {
-			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			console.log(err);
-		}
-	};
-
-	// edit User Profile
-	const editUserProfile = async (username, editedUserProfile) => {
-		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
-			const res = await axios.put(
-				`http://localhost:5000/api/v1/userprofiles/${username}`,
-				editedUserProfile,
-				config
-			);
-			dispatch({
-				type: USERPROFILE_EDITED,
-				payload: res.data
-			});
-		} catch (err) {
-			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			console.log(err);
-		}
-	};
-
-	// update Friend relationship
-	const updateFriend = async (username, friendUsername, friendStatus) => {
-		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
-			const res = await axios.put(
-				`http://localhost:5000/api/v1/userprofiles/${username}/friends/${friendUsername}`,
-				friendStatus,
-				config
-			);
-			dispatch({
-				type: FRIEND_UPDATED,
-				payload: res.data
-			});
-		} catch (err) {
-			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
-			console.log(err);
-		}
-	};
 
 
 	return (
-		<GlobalContext.Provider
+		<PostContext.Provider
 			value={{
 				loading: state.loading,
-				//user: state.user,
 				error: state.error,
 				stories: state.stories,
 				getStories,
@@ -271,16 +179,12 @@ const GlobalState = props => {
 				deleteStory,
 				postComment,
 				editComment,
-				deleteComment,
-				getUserProfiles,
-				postUserProfile,
-				editUserProfile,
-				updateFriend
+				deleteComment
 			}}
 		>
 			{props.children}
-		</GlobalContext.Provider>
+		</PostContext.Provider>
 	);
 };
 
-export default GlobalState;
+export default PostState;

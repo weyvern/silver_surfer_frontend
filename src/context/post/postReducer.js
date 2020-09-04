@@ -5,11 +5,7 @@ import {
 	STORY_DELETED,
 	COMMENT_POSTED,
 	COMMENT_EDITED,
-	COMMENT_DELETED,
-	USERPROFILES_LOADED,
-	USERPROFILE_POSTED,
-	USERPROFILE_EDITED,
-	FRIEND_UPDATED,
+	COMMENT_DELETED
 } from './types';
 
 export default (state, action) => {
@@ -61,33 +57,6 @@ export default (state, action) => {
 				loading: false,
 				story: action.payload
 			};
-        case USERPROFILES_LOADED:
-            return {
-				...state,
-				loading: false,
-				userProfiles: action.payload
-			};
-        case USERPROFILE_POSTED:
-            return {
-				...state,
-				loading: false,
-				userProfiles: [...state.userProfiles, action.payload]
-            };
-    //??
-        case USERPROFILE_EDITED:
-            return {
-				...state,
-				loading: false,
-				story: action.payload
-            };
-    //??
-        case FRIEND_UPDATED:
-            return {
-				...state,
-				loading: false,
-				story: action.payload
-			};
-       
 		default:
 			return state;
 	}

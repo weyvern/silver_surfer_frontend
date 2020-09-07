@@ -94,3 +94,63 @@
 		transform: rotate(0);
 	}
 }
+
+
+
+
+/*********************     Event - Calendar             ****************************/
+
+.fc-toolbar-chunk button{
+color: #fff !important;
+	background-color: #884592 !important;
+	border-color: #884592 !important;
+	padding: 0.8rem 1.2rem;
+	border-radius: 1rem !important;
+}
+
+.fc-toolbar-chunk button:hover{
+	color: #fff;
+	background-color: #703978;
+	border-color: #68356f;
+	}
+
+
+	.fc-toolbar-chunk button:focus, .fc-toolbar-chunk button.focus {
+	color: #fff;
+	outline: none;
+	background-color: #703978;
+	border-color: #68356f;
+	box-shadow: 0 0 0 0.2rem rgba(154, 97, 162, 0.5);
+	
+  }
+ 
+
+
+  #events .event-row {
+	overflow: auto;
+	white-space:nowrap;
+	width: 500px;
+  }
+
+
+  /********************     Spinner               ****************************/
+
+.hJtphO > div:nth-child(1),
+.hJtphO > div:nth-child(2),
+.hJtphO > div:nth-child(3),
+.hJtphO > div:nth-child(4),
+.hJtphO > div:nth-child(5),
+.hJtphO > div:nth-child(6),
+.hJtphO > div:nth-child(7),
+.hJtphO > div:nth-child(8)
+ {
+  color: var(--primary-color) !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.hJtphO {
+  width: 4rem !important;
+  height: 4rem !important;
+}
+

@@ -13,7 +13,7 @@ const Modal = ({ handleClose, show, children }) => {
         {children}
 
         <button
-          className="return-button btn btn-primary btn-marketing rounded-pill mt-3"
+          className="btn-block btn btn-primary btn-marketing rounded-pill mt-3"
           onClick={handleClose}
         >
           close

@@ -1,24 +1,121 @@
 .modal {
-    margin: 0 auto;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-  }
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position: fixed;
+  background: var(--primary-soft);
+  max-width: 50vw;
+  max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal.display-block {
+  display: block;
+}
+
+.modal.display-none {
+  display: none;
+}
+
+.modal .card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+#EventListItem .card-img-top {
+  width: 100%;
+  height: 5vw;
+  object-fit: cover;
+}
+
+#EventListItem .card-img {
+  width: 100%;
+  height: 5vw;
+  object-fit: cover;
+}
+
+
+/*
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}*/
+
+#test {
+  overflow-y: scroll;
+  max-height: 90vh;
   
-  .modal-main {
-    position:fixed;
-    background: var(--primary-soft);
-    max-width: 50vw;
-    max-height: 90vh;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-  }
-  
-  .modal.display-block {
-    display: block;
-  }
-  
-  .modal.display-none {
-    display: none;
-  }
+}
+
+
+
+.category {
+    position: relative;
+    top: 5%;
+    right: 0;
+}
+
+/*********************     Event - Calendar             ****************************/
+
+.fc-toolbar-chunk button {
+  color: #fff !important;
+  background-color: #884592 !important;
+  border-color: #884592 !important;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem !important;
+}
+
+.fc-toolbar-chunk button:hover {
+  color: #fff;
+  background-color: #703978;
+  border-color: #68356f;
+}
+
+.fc-toolbar-chunk button:focus,
+.fc-toolbar-chunk button.focus {
+  color: #fff;
+  outline: none;
+  background-color: #703978;
+  border-color: #68356f;
+  box-shadow: 0 0 0 0.2rem rgba(154, 97, 162, 0.5);
+}
+
+.ui-state-highlight.fc-today {
+  color: #703978 !important;
+  background: #703978 !important;
+  border-color: #703978 !important;
+}
+
+#events .event-row {
+  overflow: auto;
+  white-space: nowrap;
+  width: 500px;
+}
+
+/********************     Spinner               ****************************/
+
+.hJtphO > div:nth-child(1),
+.hJtphO > div:nth-child(2),
+.hJtphO > div:nth-child(3),
+.hJtphO > div:nth-child(4),
+.hJtphO > div:nth-child(5),
+.hJtphO > div:nth-child(6),
+.hJtphO > div:nth-child(7),
+.hJtphO > div:nth-child(8) {
+  color: var(--primary-color) !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.hJtphO {
+  width: 4rem !important;
+  height: 4rem !important;
+}

@@ -9,7 +9,6 @@ const Post = () => {
 	const history = useHistory();
 	const { id } = useParams();
 	const { story, getStory, loading } = useContext(PostContext);
-
 	useEffect(() => {
 		getStory(id);
 	}, []);
@@ -21,8 +20,7 @@ const Post = () => {
 			</div>
 		));
 	};
-	console.log(story);
-	return !loading && story ? (
+	return !loading && story.author_id ? (
 		<div id="layoutDefault">
 			<div id="layoutDefault_content">
 				<main>
@@ -39,11 +37,11 @@ const Post = () => {
 										<div className="single-post-meta mr-4">
 											<img
 												className="avatar avatar-xl mx-2"
-												src="https://source.unsplash.com/QAB-WJcbgJk/100x100" /*author.avatar*/
+												src={story.author_id.profile_picture}
 											/>
 											<div className="single-post-meta-details">
 												<div className="single-post-meta-details-name">
-													author.name
+													{`${story.author_id.name.first} ${story.author_id.name.last}`}
 												</div>
 												<div className="single-post-meta-details-date">
 													{moment(story.createdAt).format('MMM Do YY')} · 6 min
@@ -92,8 +90,7 @@ const Post = () => {
 										</button>
 									</div>
 								</div>
-
-								{/* 	<CommentList {...story} /> */}
+								<CommentList {...story} />
 							</div>
 						</div>
 

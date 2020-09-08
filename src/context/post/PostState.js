@@ -62,6 +62,7 @@ const PostState = props => {
 
 	// post Story
 	const postStory = async newStory => {
+		setLoading();
 		try {
 			const config = {
 				headers: {
@@ -124,24 +125,15 @@ const PostState = props => {
 	};
 
 	// post Comment
-	const postComment = async (id, newComment) => {
+	const postComment = async (newComment, id) => {
 		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
-			const res = await axios.put(
-				`http://localhost:5000/api/v1/stories/${id}/comments`,
-				newComment,
-				config
+			const res = await axios.post(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/comments`,
+				newComment
 			);
-			dispatch({
-				type: COMMENT_POSTED,
-				payload: res.data
-			});
+			getStory(id);
+			/* dispatch({ type: COMMENT_POSTED, payload: res.data.data }); */
 		} catch (err) {
-			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
 			console.log(err);
 		}
 	};

@@ -9,18 +9,17 @@ import imageUploadHandler from '../../utils/imageUploadHandler';
 import axios from 'axios';
 const CreatePost = () => {
 	const { postStory } = useContext(PostContext);
-	const { user } = useContext(AuthContext);
+	const { userProfile } = useContext(AuthContext);
 
 	useEffect(() => {
-		setNewPost({ ...newPost, author_id: user.id });
-	}, [user]);
+		userProfile && setNewPost({ ...newPost, author_id: userProfile._id });
+	}, [userProfile]);
 	const history = useHistory();
 	const [body, setBody] = useState({});
 	const [newPost, setNewPost] = useState({});
 	const [heroPicture, setHeroPicture] = useState();
 
 	const uploadRef = useRef(null);
-	console.log(user.id);
 
 	const uploadPicture = async e => {
 		e.preventDefault();
@@ -67,8 +66,6 @@ const CreatePost = () => {
 				'Please fill out all fields before publishing your post'
 			);
 		}
-
-		console.log(newPost);
 		postStory(newPost);
 		setNewPost({});
 		history.push('/feed');

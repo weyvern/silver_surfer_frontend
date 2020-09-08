@@ -53,7 +53,10 @@ export default (state, action) => {
 			return {
 				...state,
 				loading: false,
-				story: action.payload
+				story: {
+					...state.story,
+					comments: [action.payload, ...state.story.comments]
+				}
 			};
 		//?
 		case COMMENT_EDITED:

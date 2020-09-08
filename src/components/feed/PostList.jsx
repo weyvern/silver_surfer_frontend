@@ -24,7 +24,7 @@ const PostList = () => {
 					<PostListItem story={story} key={story._id} />
 				))}
 			</div>
-			<div class="text-center">
+			<div className="text-center">
 				<button
 					className="btn btn-primary btn-marketing rounded-pill m-4"
 					onClick={() => history.goBack()}

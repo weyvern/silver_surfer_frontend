@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const PostListItem = ({ story }) => {
+	const {
+		author_id: { name, profile_picture, username }
+	} = story;
 	return (
 		<Link
 			className="m-2 card post-preview mb-5 text-decoration-none"
@@ -10,17 +13,13 @@ const PostListItem = ({ story }) => {
 			to={`/feed/${story._id}`}
 		>
 			<div className="row h-100 no-gutters">
-				<div className="col-lg-5">
-					{story.media && (
-						<div
-							className="post-preview-featured-img"
-							style={{
-								background: `url(${story.media}) no-repeat`,
-								backgroundSize: 'cover'
-							}}
-						></div>
-					)}
-				</div>
+				<div
+					className="col-lg-5 h-100"
+					style={{
+						background: `url(${story.media}) no-repeat`,
+						backgroundSize: 'cover'
+					}}
+				></div>
 				<div className="col-lg-7">
 					<div className="card-body h-100 d-flex flex-column justify-content-between">
 						<h5 className="card-title text-truncate">{story.title}</h5>
@@ -32,7 +31,9 @@ const PostListItem = ({ story }) => {
 								textOverflow: 'ellipsis'
 							}}
 						>
-							{story.short_description}
+							{story.short_description.length >= 100
+								? `${story.short_description.substring(0, 100)}...`
+								: story.short_description}
 						</p>
 						<div>
 							<hr />
@@ -40,11 +41,11 @@ const PostListItem = ({ story }) => {
 								<div className="d-flex align-items-center">
 									<img
 										className="post-preview-meta-img"
-										src="https://source.unsplash.com/QAB-WJcbgJk/100x100" /*author_avatar*/
+										src={profile_picture} /*author_avatar*/
 									/>
 									<div className="post-preview-meta-details">
 										<div className="post-preview-meta-details-name">
-											{story.author}
+											{`${name.first} ${name.last}`}
 										</div>
 										<div className="post-preview-meta-details-date">
 											{moment(story.createdAt).format('MMM Do YY')} · 6 min read
@@ -53,9 +54,9 @@ const PostListItem = ({ story }) => {
 								</div>
 
 								<div className="d-flex single-post-meta-links align-items-center">
-									<a href="#comments">
+									<div>
 										<i className="fas fa-comment fa-fw"></i>
-									</a>
+									</div>
 									<p className="m-0 mr-2">{story.comments.length}</p>
 
 									<i className="fas fa-thumbs-up fa-fw"></i>

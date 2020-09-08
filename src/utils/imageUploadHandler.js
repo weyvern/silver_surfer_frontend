@@ -5,7 +5,7 @@ const imageUploadHandler = async (blobInfo, success, failure) => {
 	formData = new FormData();
 	formData.append('file', blobInfo.blob(), blobInfo.filename());
 	const res = await axios.post(
-		'https://silver-surfer-file.herokuapp.com/',
+		process.env.REACT_APP_IMAGE_UPLOAD_SERVICE,
 		formData
 	);
 	const {

@@ -6,6 +6,7 @@
 #content {
 	height: 100vh;
 	overflow-y: scroll;
+	background-color: #fafafa;
 }
 
 #sidebar {
@@ -36,6 +37,7 @@
 #sidebarCollapse,
 #sidebarCollapse:active,
 #sidebarCollapse:focus {
+	background-color: #fafafa;
 	border: none;
 	outline: none;
 }

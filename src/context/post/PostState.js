@@ -10,13 +10,14 @@ import {
 	STORY_DELETED,
 	COMMENT_POSTED,
 	COMMENT_EDITED,
-	COMMENT_DELETED
+	COMMENT_DELETED,
+	SET_LOADING
 } from './types';
-
 
 const PostState = props => {
 	const initialState = {
 		stories: [],
+		story: null,
 		loading: true,
 		user: null,
 		error: null
@@ -24,12 +25,17 @@ const PostState = props => {
 
 	const [state, dispatch] = useReducer(PostReducer, initialState);
 
+	// Set loading
+
+	const setLoading = () => {
+		dispatch({ type: SET_LOADING });
+	};
+
 	// get Stories
 	const getStories = async () => {
+		setLoading();
 		try {
-			const res = await axios.get(
-				'http://localhost:5000/api/v1/stories'
-			);
+			const res = await axios.get('http://localhost:5000/api/v1/stories');
 			dispatch({
 				type: STORIES_LOADED,
 				payload: res.data
@@ -40,16 +46,13 @@ const PostState = props => {
 		}
 	};
 
-
 	// get Story
-	const getStory = async (id) => {
+	const getStory = async id => {
 		try {
-			const res = await axios.get(
-				`http://localhost:5000/api/v1/stories/${id}`
-			);
+			const res = await axios.get(`http://localhost:5000/api/v1/stories/${id}`);
 			dispatch({
 				type: STORY_LOADED,
-				payload: res.data
+				payload: res.data.data
 			});
 		} catch (err) {
 			/*dispatch({ type: STORIES_ERROR, payload: err.response.data });*/
@@ -58,7 +61,7 @@ const PostState = props => {
 	};
 
 	// post Story
-	const postStory = async (newStory) => {
+	const postStory = async newStory => {
 		try {
 			const config = {
 				headers: {
@@ -105,7 +108,7 @@ const PostState = props => {
 	};
 
 	// delete Story
-	const deleteStory = async (id) => {
+	const deleteStory = async id => {
 		try {
 			const res = await axios.delete(
 				`http://localhost:5000/api/v1/stories/${id}`
@@ -119,7 +122,6 @@ const PostState = props => {
 			console.log(err);
 		}
 	};
-
 
 	// post Comment
 	const postComment = async (id, newComment) => {
@@ -143,7 +145,6 @@ const PostState = props => {
 			console.log(err);
 		}
 	};
-
 
 	// edit Comment
 	const editComment = async (id, comment_id, editedComment) => {
@@ -184,12 +185,12 @@ const PostState = props => {
 		}
 	};
 
-
 	return (
 		<PostContext.Provider
 			value={{
 				loading: state.loading,
 				error: state.error,
+				story: state.story,
 				stories: state.stories,
 				getStory,
 				getStories,

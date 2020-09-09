@@ -3,14 +3,14 @@ import AuthContext from '../../context/auth/authContext';
 import PostContext from '../../context/post/postContext';
 
 const AddComment = ({ id }) => {
-	const { userProfile } = useContext(AuthContext);
-	const { postComment } = useContext(PostContext);
+	const { userProfile, loading } = useContext(AuthContext);
+	const { postComment, story } = useContext(PostContext);
 	const [newComment, setNewComment] = useState({});
 	const commentForm = useRef();
 
 	useEffect(() => {
 		userProfile && setNewComment({ ...newComment, author_id: userProfile._id });
-	}, [userProfile]);
+	}, [story]);
 
 	const handleChange = e => {
 		setNewComment({ ...newComment, [e.target.name]: e.target.value });

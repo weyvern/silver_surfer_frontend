@@ -131,7 +131,7 @@ const PostState = props => {
 	// post Comment
 	const postComment = async (newComment, id) => {
 		try {
-			const res = await axios.post(
+			await axios.post(
 				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/comments`,
 				newComment
 			);

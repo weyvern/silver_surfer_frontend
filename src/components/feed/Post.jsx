@@ -20,7 +20,7 @@ const Post = () => {
 			</div>
 		));
 	};
-	return !loading && story.author_id ? (
+	return !loading && story ? (
 		<div id="layoutDefault">
 			<div id="layoutDefault_content">
 				<main>

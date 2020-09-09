@@ -8,11 +8,9 @@ const CommentList = ({ ...data }) => {
 	const { comments, _id } = data;
 
 	const renderComments = comments => {
-		console.log(comments);
 		const sorted = comments.sort(
 			(a, b) => new Date(b.created_at) - new Date(a.created_at)
 		);
-		console.log(sorted);
 		return sorted.map(comment => (
 			<Comment comment={comment} key={comment._id} />
 		));

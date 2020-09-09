@@ -5,6 +5,9 @@ export const STORY_EDITED = 'STORY_EDITED';
 export const STORY_DELETED = 'STORY_DELETED';
 export const SET_LOADING = 'SET_LOADING';
 
+export const STORY_LIKED = 'STORY_LIKED';
+export const STORY_UNLIKED = 'STORY_UNLIKED';
+
 export const COMMENT_POSTED = 'COMMENT_POSTED';
 export const COMMENT_EDITED = 'COMMENT_EDITED';
 export const COMMENT_DELETED = 'COMMENT_DELETED';

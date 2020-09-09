@@ -7,6 +7,7 @@ import {
 	COMMENT_POSTED,
 	COMMENT_EDITED,
 	COMMENT_DELETED,
+	STORY_LIKED,
 	SET_LOADING
 } from './types';
 

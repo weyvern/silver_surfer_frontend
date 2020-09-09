@@ -4,6 +4,7 @@ import {
 	REGISTER_FAIL,
 	USER_LOADED,
 	USER_PROFILE_LOADED,
+	UPDATE_FRIENDS,
 	SET_USER_STATUS,
 	AUTH_ERROR,
 	LOGIN_FAIL,
@@ -27,6 +28,7 @@ export default (state, action) => {
 				loading: false,
 				user: action.payload.user
 			};
+		case UPDATE_FRIENDS:
 		case USER_PROFILE_LOADED:
 			return {
 				...state,

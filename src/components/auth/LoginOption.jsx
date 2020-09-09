@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const LoginOption = () => {
 	return (
 		<div className="d-flex flex-wrap align-items-center">
@@ -13,20 +14,7 @@ const LoginOption = () => {
 					<div className="card-body py-5">
 						<div className="d-flex align-items-center">
 							<div className="icon-stack icon-stack-xl bg-primary text-white flex-shrink-0">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									className="feather feather-activity"
-								>
-									<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-								</svg>
+							<i className="fas fa-user ml-1"></i>
 							</div>
 							<div className="ml-4">
 								<h5 className="text-primary">60+</h5>
@@ -47,20 +35,7 @@ const LoginOption = () => {
 					<div className="card-body py-5">
 						<div className="d-flex align-items-center">
 							<div className="icon-stack icon-stack-xl bg-primary text-white flex-shrink-0">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									className="feather feather-activity"
-								>
-									<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-								</svg>
+							<i className="fas fa-user-md ml-1"></i>
 							</div>
 							<div className="ml-4">
 								<h5 className="text-primary">Caretaker</h5>

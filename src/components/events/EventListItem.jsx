@@ -31,7 +31,7 @@ const EventListItem = ({ event }) => {
                   </div>
                   <div className="p-1">
                     <FaCalendar className="fa-fw text-primary" />{" "}
-                    <span>{moment(event.date).format("MMM Do YY")}</span>
+                    <span>{moment(event.start).format("MMM Do YY")}</span>
                   </div>
                   <div className=" p-1">
                     {event.userPicture ? (

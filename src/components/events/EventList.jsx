@@ -8,7 +8,6 @@ import { Spinner } from "react-rainbow-components";
 import EventListItemVertically from "./EventListItem_vertically";
 import Event from "./Event";
 import Modal from "./Modal";
-import AvatarGroup from "../styling/AvatarGroup";
 
 const events = [
   {
@@ -90,7 +89,8 @@ const initialState = { title: "Upcoming Events" };
 
 const EventList = () => {
   const [showModalEvent, setShowModalEvent] = useState({ show: false });
-  const [eventList, setEventList] = useState(initialState);
+  const [eventTitle, setEventTitle] = useState(initialState);
+  const [filteredEvents, setFilteredEvents] = useState(events);
   const history = useHistory();
 
   const renderEventsVertically = (events) => {
@@ -101,9 +101,11 @@ const EventList = () => {
   };
 
   const handleDateClick = (info) => {
-    setEventList({ ...eventList, title: `Upcoming Events on ${info.dateStr}` });
+    setEventTitle({ title: `Upcoming Events on ${info.dateStr}` });
     //filter eventlist according to set start date
-    alert("Clicked on: " + info.dateStr);
+   let filteredEvents = events.filter(event => event.start === info.dateStr);
+   setFilteredEvents(filteredEvents);
+    //alert("Clicked on: " + info.dateStr);
   };
 
   const hideModal = () => {
@@ -152,12 +154,12 @@ const EventList = () => {
       </div>
         </div>
         <div className="col ml-5" >
-          <h4>{eventList.title}</h4>
-		  <div id="test" style={{backgroundColor: "transparent"}}>{renderEventsVertically(events)}</div>
+          <h4>{eventTitle.title}</h4>
+		  <div id="test" style={{backgroundColor: "transparent"}}>{filteredEvents.length === 0? <div>No event on that day</div>: renderEventsVertically(filteredEvents)}</div>
        
         </div>
       </div>
-    <AvatarGroup />
+   
       <Modal show={showModalEvent.show} handleClose={hideModal}>
 	  <Event event={/*events.find((event) => event._id === showModalEvent.idx)*/ events[0]} />
       </Modal>{" "}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import moment from 'moment';
 import CommentList from './CommentList';
@@ -8,7 +8,8 @@ import './Post.css';
 const Post = () => {
 	const history = useHistory();
 	const { id } = useParams();
-	const { story, getStory, loading, addLike } = useContext(PostContext);
+	const { story, getStory, loading, addLike, deleteLike } = useContext(PostContext);
+	const [ like, setLike ] = useState(false);
 	useEffect(() => {
 		getStory(id);
 	}, []);
@@ -23,7 +24,8 @@ const Post = () => {
 
 
 	const toggleLike = () => {
-		addLike(id);
+		like === false? addLike(id) : deleteLike(id);
+		setLike(!like);
 	};
 
 
@@ -65,12 +67,12 @@ const Post = () => {
 													: 0}
 											</p>
 											</a>
-											<a href="#!" className="d-flex text-decoration-none" onClick={toggleLike}>
-												<i className="fas fa-thumbs-up fa-fw"></i>
+											<button id="likeButton" className="d-flex text-decoration-none" onClick={toggleLike} /*disabled={like}*/ style={{fontSize: "100%", border: 0, padding: 0}}>
+												<i className="fas fa-thumbs-up fa-fw" ></i>
 												<p className="m-0">{!loading && story.likes.length
 													? story.likes.length
 													: 0}</p>
-											</a>
+											</button>
 											
 										</div>
 									</div>

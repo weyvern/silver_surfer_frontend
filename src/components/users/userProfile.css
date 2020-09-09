@@ -22,7 +22,8 @@
 
 
 .react-tabs__tab {
-    border: none !important
+    border: none !important;
+    background-color: var(--primary-soft) !important;
     }
 
 .react-tabs__tab-list {

@@ -1,12 +1,12 @@
 #People .card {
-  width: 40rem;
+  width: 30rem;
   height: 15rem;
 }
 
 #People .card:after {
   content: "";
   display: block;
-  width: 8rem;
+  width: 6rem;
   height: 15rem;
   background: var(--primary);
   position: absolute;

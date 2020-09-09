@@ -3,15 +3,16 @@ import AuthContext from '../../context/auth/authContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const PeopleItem = ({ person }) => {
+const PeopleItem = ({ person, type }) => {
 	const authContext = useContext(AuthContext);
 	const { userProfile } = authContext;
 	const [button, setButton] = useState('Add friend');
-	const addFriend = async e => {
+	console.log(type);
+	const updateRelationship = async e => {
 		e.preventDefault();
 		await axios.put(
 			`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/${userProfile.username}/friends/${person.username}`,
-			{ relationship: '0' }
+			{ relationship: type }
 		);
 		setButton('Pending request');
 	};
@@ -30,9 +31,16 @@ const PeopleItem = ({ person }) => {
 							{`${person.name.first} ${person.name.last}`}
 						</Link>
 					</div>
-					<button className="btn btn-primary" onClick={e => addFriend(e)}>
-						{button}
-					</button>
+					{!type ? (
+						''
+					) : (
+						<button
+							className="btn btn-primary"
+							onClick={e => updateRelationship(e)}
+						>
+							{button}
+						</button>
+					)}
 				</div>
 			</div>
 		)

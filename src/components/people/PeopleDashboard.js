@@ -4,7 +4,6 @@ import PeopleList from './PeopleList';
 import axios from 'axios';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { Spinner } from "react-rainbow-components";
 
 const PeopleDashboard = () => {
 	const authContext = useContext(AuthContext);
@@ -19,12 +18,9 @@ const PeopleDashboard = () => {
 	useEffect(() => {
 		getPeople();
 	}, []);
-	console.log(peopleList);
-	return (
-		!loading &&
-		userProfile && (
-			<div id="People" className="m-5">
-<Tabs>
+	return !loading && userProfile ? (
+		<div id="People" className="m-5">
+			<Tabs>
 				<TabList>
 					<Tab>People</Tab>
 					<Tab>Friends</Tab>
@@ -44,9 +40,9 @@ const PeopleDashboard = () => {
 					<PeopleList peopleList={userProfile.inc_req} type={1} />
 				</TabPanel>
 			</Tabs>
-
-			</div>
-		)
+		</div>
+	) : (
+		<div>heheh</div>
 	);
 };
 

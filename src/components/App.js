@@ -11,7 +11,7 @@ import CreatePost from './feed/CreatePost';
 import UserProfile from './users/UserProfile';
 import EventList from './events/EventList';
 import Dashboard from './dashboard/Dashboard';
-import PeopleList from './people/PeopleList';
+import PeopleDashboard from './people/PeopleDashboard';
 import AuthContext from '../context/auth/authContext';
 import ChatContainer from './chat/ChatContainer';
 import './App.css';
@@ -35,7 +35,7 @@ const App = () => {
 					path="/edit-profile"
 					component={CreateUserProfile}
 				/>
-				<ProtectedRoute exact path="/people" component={PeopleList} />
+				<ProtectedRoute exact path="/people" component={PeopleDashboard} />
 				<ProtectedRoute exact path="/chat/:id" component={ChatContainer} />
 				<ProtectedRoute path="/chat" component={ChatContainer} />
 				<LoginRoute exact path="/login" component={Login} />

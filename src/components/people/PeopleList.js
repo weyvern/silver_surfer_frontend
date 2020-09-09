@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from "react-rainbow-components";
+import Spinner from '../spinner/Spinner';
 import PeopleItem from './PeopleItem';
 
 const PeopleList = ({ peopleList, type }) => {

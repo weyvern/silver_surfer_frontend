@@ -1,21 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import Spinner from '../spinner/Spinner';
 import PeopleItem from './PeopleItem';
-import axios from 'axios';
 
-const PeopleList = () => {
-	const [peopleList, setPeopleList] = useState();
-	const getPeople = async () => {
-		const res = await axios.get(
-			`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles`
-		);
-		setPeopleList(res.data.data);
-	};
-	useEffect(() => {
-		getPeople();
-	}, []);
+const PeopleList = ({ peopleList, type }) => {
 	return peopleList ? (
-		peopleList.map(p => <PeopleItem key={p.user_id} person={p} />)
+		peopleList.map(p => <PeopleItem key={p.user_id} person={p} type={type} />)
 	) : (
 		<Spinner />
 	);

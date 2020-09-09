@@ -9,9 +9,9 @@ import PostList from './feed/PostList';
 import Post from './feed/Post';
 import CreatePost from './feed/CreatePost';
 import UserProfile from './users/UserProfile';
-import Events from './events/Events';
+import EventList from './events/EventList';
 import Dashboard from './dashboard/Dashboard';
-import PeopleList from './people/PeopleList';
+import PeopleDashboard from './people/PeopleDashboard';
 import AuthContext from '../context/auth/authContext';
 import './App.css';
 
@@ -27,14 +27,14 @@ const App = () => {
 				<ProtectedRoute exact path="/feed" component={PostList} />
 				<ProtectedRoute exact path="/feed/createpost" component={CreatePost} />
 				<ProtectedRoute exact path="/feed/:id" component={Post} />
-				<ProtectedRoute exact path="/events" component={Events} />
+				<ProtectedRoute exact path="/events" component={EventList} />
 				<ProtectedRoute exact path="/" component={Dashboard} />
 				<ProtectedRoute
 					exact
 					path="/edit-profile"
 					component={CreateUserProfile}
 				/>
-				<ProtectedRoute exact path="/people" component={PeopleList} />
+				<ProtectedRoute exact path="/people" component={PeopleDashboard} />
 				<LoginRoute exact path="/login" component={Login} />
 				<LoginRoute exact path="/register" component={Register} />
 				<ProtectedRoute exact path="/:username" component={UserProfile} />

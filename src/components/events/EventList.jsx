@@ -8,6 +8,7 @@ import { Spinner } from "react-rainbow-components";
 import EventListItemVertically from "./EventListItem_vertically";
 import Event from "./Event";
 import Modal from "./Modal";
+import AvatarGroup from "../styling/AvatarGroup";
 
 const events = [
   {
@@ -146,7 +147,7 @@ const EventList = () => {
        
         </div>
       </div>
-    
+    <AvatarGroup />
       <Modal show={showModalEvent.show} handleClose={hideModal}>
 	  <Event event={/*events.find((event) => event._id === showModalEvent.idx)*/ events[0]} />
       </Modal>{" "}

@@ -64,7 +64,7 @@ const DashboardLayout = ({ children }) => {
 					</li>
 				</ul>
 			</nav>
-			<div id="content" className="bg-light w-100">
+			<div id="content" className="w-100">
 				<nav className="navbar" onClick={toggleSideBar}>
 					<button type="button" id="sidebarCollapse" ref={toggle}>
 						<span className="icon-bar top-bar"></span>

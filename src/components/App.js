@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 import LoginRoute from './auth/LoginRoute';
 import Login from './auth/Login';
 import Register from './auth/Register';
-import CreateUserProfile from './auth/CreateUserProfile';
+import CreateUserProfile from './users/CreateUserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
 import PostList from './feed/PostList';
 import Post from './feed/Post';
@@ -11,6 +11,7 @@ import CreatePost from './feed/CreatePost';
 import UserProfile from './users/UserProfile';
 import EventList from './events/EventList';
 import Dashboard from './dashboard/Dashboard';
+import PeopleList from './people/PeopleList';
 import AuthContext from '../context/auth/authContext';
 import './App.css';
 
@@ -28,13 +29,14 @@ const App = () => {
 				<ProtectedRoute exact path="/feed/:id" component={Post} />
 				<ProtectedRoute exact path="/events" component={EventList} />
 				<ProtectedRoute exact path="/" component={Dashboard} />
-				<LoginRoute exact path="/login" component={Login} />
-				<LoginRoute exact path="/register" component={Register} />
 				<ProtectedRoute
 					exact
-					path="/userprofile"
+					path="/edit-profile"
 					component={CreateUserProfile}
 				/>
+				<ProtectedRoute exact path="/people" component={PeopleList} />
+				<LoginRoute exact path="/login" component={Login} />
+				<LoginRoute exact path="/register" component={Register} />
 				<ProtectedRoute exact path="/:username" component={UserProfile} />
 			</Switch>
 		</div>

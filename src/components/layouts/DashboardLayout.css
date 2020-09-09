@@ -3,6 +3,12 @@
 	width: 100%;
 }
 
+#content {
+	height: 100vh;
+	overflow-y: scroll;
+	background-color: #fafafa;
+}
+
 #sidebar {
 	min-width: 150px;
 	max-width: 150px;
@@ -31,6 +37,7 @@
 #sidebarCollapse,
 #sidebarCollapse:active,
 #sidebarCollapse:focus {
+	background-color: #fafafa;
 	border: none;
 	outline: none;
 }

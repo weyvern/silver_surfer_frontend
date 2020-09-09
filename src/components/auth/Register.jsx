@@ -26,7 +26,7 @@ const Register = () => {
 	};
 
 	return !isAuthenticated && !loading ? (
-		<div>
+		<div className="container">
 			<div className="card rounded-lg text-dark">
 				<div className="card-header py-4">Sign up</div>
 				<div className="card-body">

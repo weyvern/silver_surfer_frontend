@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const LoginOption = () => {
 	return (
-		<div className="d-flex">
-			<div className="col-lg-6 mb-lg-n10 mb-5 mb-lg-0 z-1">
+		<div className="d-flex flex-wrap align-items-center">
+			<div className="col-lg-6 mb-lg-n10 mt-5 z-1">
 				<Link
 					to="/register"
 					className="card text-decoration-none h-100 lift"
@@ -42,7 +42,7 @@ const LoginOption = () => {
 					</div>
 				</Link>
 			</div>
-			<div className="col-lg-6 mb-lg-n10 mb-5 mb-lg-0 z-1">
+			<div className="col-lg-6 mb-lg-n10 my-5 z-1">
 				<Link to="/caretaker" className="card text-decoration-none h-100 lift">
 					<div className="card-body py-5">
 						<div className="d-flex align-items-center">

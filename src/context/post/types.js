@@ -3,7 +3,7 @@ export const STORY_LOADED = 'STORY_LOADED';
 export const STORY_POSTED = 'STORY_POSTED';
 export const STORY_EDITED = 'STORY_EDITED';
 export const STORY_DELETED = 'STORY_DELETED';
-
+export const SET_LOADING = 'SET_LOADING';
 
 export const COMMENT_POSTED = 'COMMENT_POSTED';
 export const COMMENT_EDITED = 'COMMENT_EDITED';

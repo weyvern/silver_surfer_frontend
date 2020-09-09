@@ -1,26 +1,20 @@
 import React, { useState, useContext, useRef } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import { Link, Redirect } from 'react-router-dom';
 
 const Login = () => {
 	const authContext = useContext(AuthContext);
 	const { isAuthenticated, loading, loginUser } = authContext;
 	const [user, setUser] = useState({});
-
 	const form = useRef();
-
 	const handleChange = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
 	};
-
 	const handleSubmit = e => {
 		const { email, password } = user;
 		e.preventDefault();
-		if (!email || !password) {
-			return window.alert(
-				'The usefulness of a cup is in its emptiness (old chinese proverb). And the usefulness of a todo lies in its text! Please type something in the input field.'
-			);
-		}
+		if (!email || !password)
+			return window.alert('Please provide you email and password');
 		loginUser(user);
 	};
 

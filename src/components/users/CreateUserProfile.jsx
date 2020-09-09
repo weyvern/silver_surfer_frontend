@@ -1,11 +1,23 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+import { useForm } from 'react-hook-form';
+import Spinner from '../spinner/Spinner';
 import axios from 'axios';
 import userPicture from '../../assets/img/login/placeholder.png';
 
 const CreateUserProfile = () => {
+	const authContext = useContext(AuthContext);
+	const {
+		setUserStatus,
+		user: { status, id },
+		loading,
+		loadUserProfile
+	} = authContext;
+	const { handleSubmit, register, errors } = useForm();
 	const [newUserProfile, setNewUserProfile] = useState({});
 	const [profilePicture, setProfilePicture] = useState();
-	
+
 	const uploadRef = useRef(null);
 
 	const uploadPicture = async e => {
@@ -14,7 +26,10 @@ const CreateUserProfile = () => {
 		formData.append('file', e.target.files[0]);
 
 		try {
-			const res = await axios.post('http://localhost:4000/', formData);
+			const res = await axios.post(
+				process.env.REACT_APP_IMAGE_UPLOAD_SERVICE,
+				formData
+			);
 			setProfilePicture(res.data.location);
 		} catch (err) {
 			console.log(err);
@@ -27,36 +42,47 @@ const CreateUserProfile = () => {
 	};
 
 	const handleChange = e => {
-		console.log(e.target);
 		setNewUserProfile({ ...newUserProfile, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = e => {
-		const { name, lastName, email, password } = newUserProfile;
+	const onSubmit = async e => {
 		e.preventDefault();
-		/*
-        //Validation
-
-        if(password.length < 5) {
-            return window.alert("Password needs to be longer than 5 characters.");
-        }
-
-        if(!name || !lastName || !nemail || !password) {
-            return window.alert("Empty fields: Please fill out every field.");
-        }
-*/
-        let UserProfile = newUserProfile;
-        //postUserProfile(UserProfile);
-        
-        setNewUserProfile({});
+		const {
+			name,
+			lastName,
+			dob,
+			street,
+			zipcode,
+			phone,
+			state,
+			short_profile
+		} = newUserProfile;
+		try {
+			await axios.post('http://localhost:5000/api/v1/userprofiles', {
+				name: { first: name, last: lastName },
+				username: `${name.replace(/\s/g, '').toLowerCase()}.${lastName
+					.replace(/\s/g, '')
+					.toLowerCase()}.${new Date().getTime()}`,
+				phone,
+				address: `${street} ${state} DE ${zipcode}`,
+				short_description: short_profile,
+				dob: Date.parse(dob.replace('.', '/')),
+				profile_picture: profilePicture
+			});
+			setUserStatus('active');
+			loadUserProfile(id);
+		} catch (err) {
+			console.log(err);
+		}
 	};
-
+	if (loading) return <Spinner />;
+	if (status === 'active') return <Redirect to="/" />;
 	return (
 		<div className="container">
 			<div className="card rounded-lg text-dark">
 				<div className="card-header py-4">Create User Profile</div>
 				<div className="card-body">
-					<form class="py-4">
+					<form className="py-4">
 						<div className="form-row justify-content-center">
 							<div className="avatar avatar-xxl mx-2">
 								<img
@@ -80,15 +106,15 @@ const CreateUserProfile = () => {
 							/>
 						</div>
 					</form>
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={e => handleSubmit(onSubmit(e))}>
 						<div className="form-row pt-2">
 							<div className="form-group col-md-6">
 								<label
 									className="small text-gray-600"
-									for="leadCapFirstName"
+									htmlFor="leadCapFirstName"
 									name="name"
 								>
-									First Name
+									First Name <sup>*</sup>
 								</label>
 								<input
 									className="form-control rounded-pill"
@@ -96,16 +122,23 @@ const CreateUserProfile = () => {
 									name="name"
 									type="text"
 									onChange={handleChange}
-									required
+									ref={register({
+										required: `The 'name' field is required`
+									})}
 								/>
+								{errors.name && (
+									<div class="alert alert-danger mt-1" role="alert">
+										{errors.name.message}
+									</div>
+								)}
 							</div>
 							<div className="form-group col-md-6">
 								<label
 									className="small text-gray-600"
-									for="leadCapLastName"
+									htmlFor="leadCapLastName"
 									name="lastName"
 								>
-									Last Name
+									Last Name <sup>*</sup>
 								</label>
 								<input
 									className="form-control rounded-pill"
@@ -113,31 +146,21 @@ const CreateUserProfile = () => {
 									name="lastName"
 									type="text"
 									onChange={handleChange}
-									required
+									ref={register({
+										required: `The 'Last Name' field is required`
+									})}
 								/>
+								{errors.lastName && (
+									<div class="alert alert-danger mt-1" role="alert">
+										{errors.lastName.message}
+									</div>
+								)}
 							</div>
 						</div>
 						<div className="form-group">
 							<label
 								className="small text-gray-600"
-								for="leadCapEmail"
-								name="email"
-							>
-								Email address
-							</label>
-							<input
-								className="form-control rounded-pill"
-								id="leadCapEmail"
-								name="email"
-								type="email"
-								onChange={handleChange}
-								required
-							/>
-						</div>
-						<div className="form-group">
-							<label
-								className="small text-gray-600"
-								for="leadCapAddress"
+								htmlFor="leadCapAddress"
 								name="address"
 							>
 								Address
@@ -147,7 +170,7 @@ const CreateUserProfile = () => {
 							<div className="form-group col-md-6">
 								<label
 									className="small text-gray-600"
-									for="leadCapStreet"
+									htmlFor="leadCapStreet"
 									name="street"
 								>
 									Street Address
@@ -163,7 +186,7 @@ const CreateUserProfile = () => {
 							<div className="form-group col-md-3">
 								<label
 									className="small text-gray-600"
-									for="leadCapState"
+									htmlFor="leadCapState"
 									name="state"
 								>
 									State
@@ -179,7 +202,7 @@ const CreateUserProfile = () => {
 							<div className="form-group col-md-3">
 								<label
 									className="small text-gray-600"
-									for="leadCapZipcode"
+									htmlFor="leadCapZipcode"
 									name="zipcode"
 								>
 									Zipcode
@@ -197,7 +220,7 @@ const CreateUserProfile = () => {
 							<div className="form-group">
 								<label
 									className="small text-gray-600"
-									for="leadCapPhone"
+									htmlFor="leadCapPhone"
 									name="phone"
 								>
 									Phone Number
@@ -213,7 +236,7 @@ const CreateUserProfile = () => {
 							<div className="form-group">
 								<label
 									className="small text-gray-600"
-									for="leadCapDob"
+									htmlFor="leadCapDob"
 									name="dob"
 								>
 									Birthday
@@ -225,14 +248,25 @@ const CreateUserProfile = () => {
 									type="text"
 									placeholder="e.g. 01.01.1990"
 									onChange={handleChange}
-									required
+									ref={register({
+										required: `The field 'birthday' is required`,
+										pattern: {
+											value: /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/g,
+											message: 'Invalid date'
+										}
+									})}
 								/>
+								{errors.dob && (
+									<div class="alert alert-danger mt-1" role="alert">
+										{errors.dob.message}
+									</div>
+								)}
 							</div>
 						</div>
 						<div className="form-group">
 							<label
 								className="small text-gray-600"
-								for="leadCapShortProfile"
+								htmlFor="leadCapShortProfile"
 								name="short_profile"
 							>
 								Tell us about yourself

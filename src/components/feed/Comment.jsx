@@ -1,28 +1,35 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import moment from 'moment';
 
-const Comment = () => {
-  const history = useHistory();
-  return (
-    <div>
-      <div className="card my-3 single-post">
-        <p className="p-3">
-          comment.body This is a very long comment about this story. Lalalalal
-          the sun is shining
-        </p>
-        <div className="card-footer single-post-meta m-0 p-1">
-          <img
-            className="avatar avatar-xl mx-2"
-            src="https://source.unsplash.com/QAB-WJcbgJk/100x100" /*author.avatar*/
-          />
-          <div className="single-post-meta-details">
-            <div className="single-post-meta-details-name">comment.author.name</div>
-            <div className="single-post-meta-details-date">comment.date/moment</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const Comment = ({ comment }) => {
+	const {
+		created_at,
+		author_id: {
+			name: { first, last },
+			profile_picture
+		}
+	} = comment;
+	return (
+		<div>
+			<div className="card my-3 single-post">
+				<p className="p-3">{comment.text}</p>
+				<div className="card-footer single-post-meta m-0 p-1">
+					<img
+						className="avatar avatar-xl mx-2"
+						src={profile_picture} /*author.avatar*/
+					/>
+					<div className="single-post-meta-details">
+						<div className="single-post-meta-details-name">
+							{`${first} ${last}`}
+						</div>
+						<div className="single-post-meta-details-date">
+							{moment(created_at).format('MMM Do YY, h:mm a')}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Comment;

@@ -14,18 +14,18 @@ const PostListItem = ({ story }) => {
 		>
 			<div className="row h-100 no-gutters">
 				<div
-					className="col-lg-5 h-100"
+					className="col-lg-4 h-100"
 					style={{
 						background: `url(${story.media}) no-repeat`,
 						backgroundSize: 'cover'
 					}}
 				></div>
-				<div className="col-lg-7">
+				<div className="col-lg-8">
 					<div className="card-body h-100 d-flex flex-column justify-content-between">
 						<h5 className="card-title text-truncate">{story.title}</h5>
 						<p
-							className=""
 							style={{
+								color: '#686e73',
 								whiteSpace: 'normal',
 								overflow: 'hidden',
 								textOverflow: 'ellipsis'
@@ -44,10 +44,10 @@ const PostListItem = ({ story }) => {
 										src={profile_picture} /*author_avatar*/
 									/>
 									<div className="post-preview-meta-details">
-										<div className="post-preview-meta-details-name">
+										<div className="post-preview-meta-details-name" style={{color: '#686e73'}}>
 											{`${name.first} ${name.last}`}
 										</div>
-										<div className="post-preview-meta-details-date">
+										<div className="post-preview-meta-details-date" style={{color: '#686e73'}}>
 											{moment(story.createdAt).format('MMM Do YY')} · 6 min read
 										</div>
 									</div>

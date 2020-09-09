@@ -50,18 +50,21 @@ const Post = () => {
 											</div>
 										</div>
 										<div className="d-flex single-post-meta-links align-items-center">
-											<a href="#comments">
+											<a href="#comments" className="d-flex text-decoration-none">
 												<i className="fas fa-comment fa-fw"></i>
-											</a>
-											{/* 	<p className="m-0 mr-2">
+												<p className="m-0 mr-2">
 												{!loading && story.comments.length
 													? story.comments.length
 													: 0}
 											</p>
-											<a href="#!">
-												<i className="fas fa-thumbs-up fa-fw"></i>
 											</a>
-											<p className="m-0">{story.likes.length}</p> */}
+											<a href="#!" className="d-flex text-decoration-none">
+												<i className="fas fa-thumbs-up fa-fw"></i>
+												<p className="m-0">{!loading && story.likes.length
+													? story.likes.length
+													: 0}</p>
+											</a>
+											
 										</div>
 									</div>
 									<div

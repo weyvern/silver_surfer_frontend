@@ -1,0 +1,44 @@
+#UserProfile .custom_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #e9e9e9;
+}
+
+#UserProfile .profile_picture {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+#UserProfile .profile_text {
+  padding-top: 7rem;
+}
+
+
+
+.react-tabs__tab--selected {
+    background-color: var(--primary-soft) !important; }
+
+
+.react-tabs__tab {
+    border: none !important
+    }
+
+.react-tabs__tab-list {
+border: none !important
+}
+ 
+.react-tabs__tab-panel {
+    padding: 1.5rem
+}
+
+
+.react-tabs__tab-panel {
+    background-color: var(--primary-soft);
+    height: 100vh;
+}
+
+.react-tabs__tab-list {
+    margin: 0 !important;
+}

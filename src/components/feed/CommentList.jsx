@@ -21,7 +21,7 @@ const CommentList = ({ ...data }) => {
 	return (
 		<div>
 			<hr className="my-5" />
-			<div className="d-flex align-items-center mb-3">
+			<div className="d-flex align-items-center mb-3 primary">
 				<i className="fas fa-comment fa-fw"></i>
 				<p className="m-0 mr-2">{comments.length}</p>
 				<h2 className="m-0" id="Comments">

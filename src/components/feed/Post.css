@@ -2,3 +2,9 @@
 	width: 100%;
 	height: auto;
 }
+
+
+#feed .single-post-meta-links {
+color: var(--primary) !important;
+background-color: var(--primary) !important;
+}

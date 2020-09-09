@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import PostContext from '../../context/post/postContext';
 import PostListItem from './PostListItem';
-import Spinner from '../spinner/Spinner';
+import { Spinner } from "react-rainbow-components";
 
 const PostList = () => {
 	const history = useHistory();

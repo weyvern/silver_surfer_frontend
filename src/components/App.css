@@ -23743,6 +23743,33 @@ section {
   height: 20rem;
 }
 
+
+/**     Spinner               **/
+
+.hJtphO > div:nth-child(1),
+.hJtphO > div:nth-child(2),
+.hJtphO > div:nth-child(3),
+.hJtphO > div:nth-child(4),
+.hJtphO > div:nth-child(5),
+.hJtphO > div:nth-child(6),
+.hJtphO > div:nth-child(7),
+.hJtphO > div:nth-child(8)
+ {
+  color: var(--primary) !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.hJtphO {
+  width: 4rem !important;
+  height: 4rem !important;
+}
+
+.fa-fw,
+.fa-fw + p {
+  color: var(--primary);
+}
+
 /* 
 .card {
   min-width: 100%;

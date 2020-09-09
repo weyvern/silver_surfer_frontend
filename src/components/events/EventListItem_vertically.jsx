@@ -32,13 +32,8 @@ const EventListItemVertically = ({ event, onClick }) => {
               <div class="card-body">
                 <div className="d-flex justify-content-between">
                   <div class="d-flex single-post-meta-links align-items-center">
-                    <i class="fas fa-comment fa-fw"></i>
-
-                    <p class="m-0 mr-2">2</p>
-
-                    <i class="fas fa-thumbs-up fa-fw"></i>
-
-                    <p class="m-0"></p>
+                    <i class="fas fa-users fa-fw"></i>
+                    <p class="m-0 ml-1">{event.participants}</p>
                   </div>
                   <div class="text-right category">
                     {event.categories && renderCategories(event.categories)}
@@ -72,7 +67,7 @@ const EventListItemVertically = ({ event, onClick }) => {
                         alt="..."
                       />
                     )}
-                    <span>event.author</span>
+                    <span>{event.author}</span>
                   </div>
                 </div>{" "}
               </div>

@@ -5,15 +5,11 @@ import axios from 'axios';
 
 const PeopleItem = ({ person, type }) => {
 	const authContext = useContext(AuthContext);
-	const { userProfile } = authContext;
+	const { userProfile, updateRelationship } = authContext;
 	const [button, setButton] = useState('Add friend');
-	console.log(type);
-	const updateRelationship = async e => {
+	const handleAction = async e => {
 		e.preventDefault();
-		await axios.put(
-			`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/${userProfile.username}/friends/${person.username}`,
-			{ relationship: type }
-		);
+		updateRelationship(userProfile.username, person.username, type);
 		setButton('Pending request');
 	};
 	useEffect(() => {});
@@ -27,16 +23,18 @@ const PeopleItem = ({ person, type }) => {
 							className="rounded-circle"
 							width="150px"
 						/>
-						<Link to={`/${person.username}`} className="ml-3 card-title text-decoration-none" style={{color: "#686e73"}}>
+						<Link
+							to={`/${person.username}`}
+							className="ml-3 card-title text-decoration-none"
+							style={{ color: '#686e73' }}
+						>
 							{`${person.name.first} ${person.name.last}`}
 						</Link>
 					</div>
-					{!type ? (
-						''
-					) : (
+					{type !== null && (
 						<button
 							className="btn btn-primary btn-marketing rounded-pill m-4"
-							onClick={e => updateRelationship(e)}
+							onClick={e => handleAction(e)}
 						>
 							{button}
 						</button>

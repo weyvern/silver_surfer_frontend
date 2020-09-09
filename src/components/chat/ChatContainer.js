@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Chat from './Chat';
 import MessageBox from './MessageBox';
 import Conversations from './Conversations';
-import Spinner from '../../components/spinner/Spinner';
+import { Spinner } from 'react-rainbow-components';
 import useChat from '../../utils/useChat';
 import '../../assets/styles.css';
 

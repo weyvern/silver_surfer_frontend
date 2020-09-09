@@ -14,15 +14,16 @@ import Dashboard from './dashboard/Dashboard';
 import PeopleDashboard from './people/PeopleDashboard';
 import AuthContext from '../context/auth/authContext';
 import ChatContainer from './chat/ChatContainer';
+import { Spinner } from 'react-rainbow-components';
 import './App.css';
 
 const App = () => {
 	const authContext = useContext(AuthContext);
-	const { loadUser } = authContext;
+	const { loadUser, loading } = authContext;
 	useEffect(() => {
 		loadUser();
 	}, []);
-	return (
+	return !loading ? (
 		<div className="App">
 			<Switch>
 				<ProtectedRoute exact path="/feed" component={PostList} />
@@ -43,6 +44,8 @@ const App = () => {
 				<ProtectedRoute exact path="/:username" component={UserProfile} />
 			</Switch>
 		</div>
+	) : (
+		<Spinner />
 	);
 };
 

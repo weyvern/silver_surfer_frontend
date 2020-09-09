@@ -11,6 +11,7 @@ import {
 	COMMENT_POSTED,
 	COMMENT_EDITED,
 	COMMENT_DELETED,
+	STORY_LIKED,
 	SET_LOADING
 } from './types';
 
@@ -128,6 +129,33 @@ const PostState = props => {
 		}
 	};
 
+	// add like
+	const addLike = async (id) => {
+		try {
+			await axios.put(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/likes`
+			);
+			getStory(id);
+			/* dispatch({ type: COMMENT_POSTED, payload: res.data.data }); */
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+
+	// delete like
+	const deleteLike = async (id) => {
+		try {
+			await axios.delete(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/likes`
+			);
+			getStory(id);
+			/* dispatch({ type: COMMENT_POSTED, payload: res.data.data }); */
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	// post Comment
 	const postComment = async (newComment, id) => {
 		try {
@@ -195,7 +223,9 @@ const PostState = props => {
 				deleteStory,
 				postComment,
 				editComment,
-				deleteComment
+				deleteComment,
+				addLike,
+				deleteLike
 			}}
 		>
 			{props.children}

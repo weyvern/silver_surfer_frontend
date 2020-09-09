@@ -8,7 +8,7 @@ import './Post.css';
 const Post = () => {
 	const history = useHistory();
 	const { id } = useParams();
-	const { story, getStory, loading } = useContext(PostContext);
+	const { story, getStory, loading, addLike } = useContext(PostContext);
 	useEffect(() => {
 		getStory(id);
 	}, []);
@@ -20,6 +20,13 @@ const Post = () => {
 			</div>
 		));
 	};
+
+
+	const toggleLike = () => {
+		addLike(id);
+	};
+
+
 	return !loading && story ? (
 		<div id="layoutDefault">
 			<div id="layoutDefault_content">
@@ -50,7 +57,7 @@ const Post = () => {
 											</div>
 										</div>
 										<div className="d-flex single-post-meta-links align-items-center">
-											<a href="#comments" className="d-flex text-decoration-none">
+											<a href="#Comments" className="d-flex text-decoration-none">
 												<i className="fas fa-comment fa-fw"></i>
 												<p className="m-0 mr-2">
 												{!loading && story.comments.length
@@ -58,7 +65,7 @@ const Post = () => {
 													: 0}
 											</p>
 											</a>
-											<a href="#!" className="d-flex text-decoration-none">
+											<a href="#!" className="d-flex text-decoration-none" onClick={toggleLike}>
 												<i className="fas fa-thumbs-up fa-fw"></i>
 												<p className="m-0">{!loading && story.likes.length
 													? story.likes.length

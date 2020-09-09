@@ -58,7 +58,7 @@ const CreateUserProfile = () => {
 			short_profile
 		} = newUserProfile;
 		try {
-			await axios.post('http://localhost:5000/api/v1/userprofiles', {
+			await axios.post(`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles`, {
 				name: { first: name, last: lastName },
 				username: `${name.replace(/\s/g, '').toLowerCase()}.${lastName
 					.replace(/\s/g, '')

@@ -42,7 +42,7 @@ const PeopleDashboard = () => {
 					<PeopleList peopleList={userProfile.friends} type={3} />
 				</TabPanel>
 				<TabPanel>
-					<PeopleList peopleList={userProfile.sent_req} type={null} />
+					<PeopleList peopleList={userProfile.sent_req} type={4} />
 				</TabPanel>
 				<TabPanel>
 					<PeopleList peopleList={userProfile.inc_req} type={1} />

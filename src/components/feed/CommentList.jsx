@@ -10,7 +10,7 @@ const CommentList = ({ ...data }) => {
 	const renderComments = comments => {
 		return comments.map(comment => (
 			<Comment comment={comment} key={comment._id} />
-		));
+		)).sort((a,b) => (a.created_at > b.created_at) ? 1 : ((b.created_at > a.created_at) ? -1 : 0));
 	};
 
 	return (

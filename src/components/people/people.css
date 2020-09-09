@@ -1,0 +1,19 @@
+#People .card {
+  width: 40rem;
+  height: 15rem;
+}
+
+#People .card:after {
+  content: "";
+  display: block;
+  width: 8rem;
+  height: 15rem;
+  background: var(--primary);
+  position: absolute;
+  transform: skewX(30deg);
+}
+
+#People .card-body {
+  z-index: 30;
+  overflow: hidden !important;
+}

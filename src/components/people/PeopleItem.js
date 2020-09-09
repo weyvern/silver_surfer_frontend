@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './people.css'
 
 const PeopleItem = ({ person, type }) => {
 	const authContext = useContext(AuthContext);
@@ -21,8 +22,9 @@ const PeopleItem = ({ person, type }) => {
 		person && (
 			<div className="card">
 				<div className="card-body d-flex justify-content-between align-items-center">
-					<div>
+					<div >
 						<img
+						
 							src={person.profile_picture}
 							className="rounded-circle"
 							width="150px"

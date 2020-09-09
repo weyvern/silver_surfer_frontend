@@ -6,9 +6,8 @@ import {
 	USERPROFILES_LOADED,
 	USERPROFILE_POSTED,
 	USERPROFILE_EDITED,
-	FRIEND_UPDATED,
+	FRIEND_UPDATED
 } from './types';
-
 
 const UserProfileState = props => {
 	const initialState = {
@@ -24,7 +23,7 @@ const UserProfileState = props => {
 	const getUserProfiles = async () => {
 		try {
 			const res = await axios.get(
-				'http://localhost:5000/api/v1/userprofiles'
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles`
 			);
 			dispatch({
 				type: USERPROFILES_LOADED,
@@ -36,9 +35,8 @@ const UserProfileState = props => {
 		}
 	};
 
-
 	// post User Profile
-	const postUserProfile = async (newUserProfile) => {
+	const postUserProfile = async newUserProfile => {
 		try {
 			const config = {
 				headers: {
@@ -46,7 +44,7 @@ const UserProfileState = props => {
 				}
 			};
 			const res = await axios.post(
-				'http://localhost:5000/api/v1/userprofiles',
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles`,
 				newUserProfile,
 				config
 			);
@@ -69,7 +67,7 @@ const UserProfileState = props => {
 				}
 			};
 			const res = await axios.put(
-				`http://localhost:5000/api/v1/userprofiles/${username}`,
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/${username}`,
 				editedUserProfile,
 				config
 			);
@@ -92,7 +90,7 @@ const UserProfileState = props => {
 				}
 			};
 			const res = await axios.put(
-				`http://localhost:5000/api/v1/userprofiles/${username}/friends/${friendUsername}`,
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/${username}/friends/${friendUsername}`,
 				friendStatus,
 				config
 			);
@@ -105,7 +103,6 @@ const UserProfileState = props => {
 			console.log(err);
 		}
 	};
-
 
 	return (
 		<UserProfileContext.Provider

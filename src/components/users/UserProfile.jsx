@@ -9,7 +9,7 @@ const UserProfile = () => {
 	const { username } = useParams();
 	const getUserProfile = async () => {
 		const res = await axios.get(
-			`http://localhost:5000/api/v1/userprofiles/null/${username}`
+			`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/null/${username}`
 		);
 		setCurrentUser(res.data.data);
 		setLoading(false);

@@ -35,7 +35,9 @@ const PostState = props => {
 	const getStories = async () => {
 		setLoading();
 		try {
-			const res = await axios.get('http://localhost:5000/api/v1/stories');
+			const res = await axios.get(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories`
+			);
 			dispatch({
 				type: STORIES_LOADED,
 				payload: res.data
@@ -49,7 +51,9 @@ const PostState = props => {
 	// get Story
 	const getStory = async id => {
 		try {
-			const res = await axios.get(`http://localhost:5000/api/v1/stories/${id}`);
+			const res = await axios.get(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}`
+			);
 			dispatch({
 				type: STORY_LOADED,
 				payload: res.data.data
@@ -71,7 +75,7 @@ const PostState = props => {
 			};
 
 			const res = await axios.post(
-				'http://localhost:5000/api/v1/stories/',
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/`,
 				newStory,
 				config
 			);
@@ -94,7 +98,7 @@ const PostState = props => {
 				}
 			};
 			const res = await axios.put(
-				`http://localhost:5000/api/v1/stories/${id}`,
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}`,
 				editedStory,
 				config
 			);
@@ -112,7 +116,7 @@ const PostState = props => {
 	const deleteStory = async id => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:5000/api/v1/stories/${id}`
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}`
 			);
 			dispatch({
 				type: STORY_DELETED,
@@ -147,7 +151,7 @@ const PostState = props => {
 				}
 			};
 			const res = await axios.put(
-				`http://localhost:5000/api/v1/stories/${id}/comments/${comment_id}`,
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/comments/${comment_id}`,
 				editedComment,
 				config
 			);
@@ -165,7 +169,7 @@ const PostState = props => {
 	const deleteComment = async (id, comment_id) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:5000/api/v1/stories/${id}/comments/${comment_id}`
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/stories/${id}/comments/${comment_id}`
 			);
 			dispatch({
 				type: COMMENT_DELETED,

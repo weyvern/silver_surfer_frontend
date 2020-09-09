@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import { useForm } from 'react-hook-form';
-import Spinner from '../spinner/Spinner';
+import { Spinner } from "react-rainbow-components";
 import axios from 'axios';
 import userPicture from '../../assets/img/login/placeholder.png';
 
@@ -272,7 +272,7 @@ const CreateUserProfile = () => {
 								Tell us about yourself
 							</label>
 							<textarea
-								className="form-control rounded-pill"
+								className="form-control rounded-lg"
 								id="leadCapShortProfile"
 								name="short_profile"
 								type="text"

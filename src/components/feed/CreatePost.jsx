@@ -104,7 +104,7 @@ const CreatePost = () => {
 									Short Description
 								</label>
 								<textarea
-									className="form-control rounded-pill"
+									className="form-control rounded-lg"
 									id="leadCapShortDescription"
 									name="short_description"
 									type="text"

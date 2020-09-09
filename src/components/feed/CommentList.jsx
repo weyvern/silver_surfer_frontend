@@ -13,13 +13,13 @@ const CommentList = ({ ...data }) => {
 		);
 		return sorted.map(comment => (
 			<Comment comment={comment} key={comment._id} />
-		));
+		)).sort((a,b) => (a.created_at > b.created_at) ? 1 : ((b.created_at > a.created_at) ? -1 : 0));
 	};
 
 	return (
 		<div>
 			<hr className="my-5" />
-			<div className="d-flex align-items-center mb-3">
+			<div className="d-flex align-items-center mb-3 primary">
 				<i className="fas fa-comment fa-fw"></i>
 				<p className="m-0 mr-2">{comments.length}</p>
 				<h2 className="m-0" id="Comments">

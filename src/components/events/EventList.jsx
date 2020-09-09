@@ -12,36 +12,40 @@ import AvatarGroup from "../styling/AvatarGroup";
 
 const events = [
   {
-    title: "event 1",
-    start: "2020-09-02",
-    end: "2020-09-04",
-    display: "background",
-    color: "#ff9f89",
+    title: "Board Game Night",
+    start: "2020-09-10",
+    end: "2020-09-10",
     _id: 1,
-    description: "This is the ddescription of event1",
+    description: "Let's play board games together and have a fun evening. Please bring all the games you want to play. We start at 8pm. I you can't participate please leave a message",
     location: "Berlin, DE",
-    categories: ["sewing", "group"],
+    categories: ["games", "group"],
+    author: "Lila Khedira",
+    participants: 6
   },
   {
-    title: "event 2",
+    title: "Food Tour",
     start: "2020-09-010",
     end: "2020-09-010",
     _id: 2,
     description: "This is the ddescription of event2",
     location: "New York, US",
-    categories: ["hiking", "active"],
+    categories: ["food", "active"],
+    author: "Sarah Hell",
+    participants: 23
   },
   {
-    title: "event 3",
+    title: "City Tour",
     start: "2020-09-02",
     end: "2020-09-04",
     _id: 3,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
-    categories: ["sewing", "group"],
+    categories: ["active", "group"],
+    author: "Tim Schmidt",
+    participants: 2
   },
   {
-    title: "event 4",
+    title: "See my city",
     start: "2020-09-02",
     end: "2020-09-04",
     display: "background",
@@ -49,18 +53,22 @@ const events = [
     _id: 4,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
-    categories: ["sewing", "group"],
+    categories: ["active", "group"],
+    author: "Klaus Meier",
+    participants: 34
   },
   {
-    title: "event 5",
-    start: "2020-09-02",
-    end: "2020-09-04",
+    title: "Museum Tour",
+    start: "2020-09-15",
+    end: "2020-09-15",
     display: "background",
     color: "#ff9f89",
     _id: 5,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
-    categories: ["sewing", "group"],
+    categories: ["culture", "group"],
+    author: "Lisa Müller",
+    participants: 17
   },
   {
     title: "event 6",
@@ -72,6 +80,8 @@ const events = [
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
     categories: ["sewing", "group"],
+    author: "Sandra Möller",
+    participants: 10
   }
 ];
   

@@ -27,7 +27,7 @@ const PeopleItem = ({ person, type }) => {
 							className="rounded-circle"
 							width="150px"
 						/>
-						<Link to={`/${person.username}`} className="ml-3 card-title">
+						<Link to={`/${person.username}`} className="ml-3 card-title text-decoration-none" style={{color: "#686e73"}}>
 							{`${person.name.first} ${person.name.last}`}
 						</Link>
 					</div>
@@ -35,7 +35,7 @@ const PeopleItem = ({ person, type }) => {
 						''
 					) : (
 						<button
-							className="btn btn-primary"
+							className="btn btn-primary btn-marketing rounded-pill m-4"
 							onClick={e => updateRelationship(e)}
 						>
 							{button}

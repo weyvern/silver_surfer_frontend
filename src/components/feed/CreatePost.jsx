@@ -32,7 +32,6 @@ const CreatePost = () => {
 				formData
 			);
 			setHeroPicture(res.data.location);
-			console.log(res.data.location);
 		} catch (err) {
 			console.log(err);
 		}

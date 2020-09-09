@@ -13,7 +13,15 @@ const PeopleDashboard = () => {
 		const res = await axios.get(
 			`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles`
 		);
-		setPeopleList(res.data.data);
+		if (userProfile && !loading) {
+			const relationships = userProfile.friends.concat(
+				userProfile.sent_req,
+				userProfile.inc_req
+			);
+			const compare = relationships.map(r => r.user_id);
+			const results = res.data.data.filter(p => !compare.includes(p.user_id));
+			setPeopleList(results);
+		}
 	};
 	useEffect(() => {
 		getPeople();
@@ -34,7 +42,7 @@ const PeopleDashboard = () => {
 					<PeopleList peopleList={userProfile.friends} type={3} />
 				</TabPanel>
 				<TabPanel>
-					<PeopleList peopleList={userProfile.sent_req} />
+					<PeopleList peopleList={userProfile.sent_req} type={null} />
 				</TabPanel>
 				<TabPanel>
 					<PeopleList peopleList={userProfile.inc_req} type={1} />

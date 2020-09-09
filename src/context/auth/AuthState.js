@@ -9,6 +9,7 @@ import {
 	REGISTER_FAIL,
 	USER_LOADED,
 	USER_PROFILE_LOADED,
+	UPDATE_FRIENDS,
 	SET_USER_STATUS,
 	AUTH_ERROR,
 	LOGIN_FAIL,
@@ -139,6 +140,19 @@ const AuthState = props => {
 			dispatch({ type: AUTH_ERROR, payload: err.response.data });
 		}
 	};
+	// Update friends relations
+	const updateRelationship = async (sender, recipient, type) => {
+		try {
+			setLoading();
+			const res = await axios.put(
+				`${process.env.REACT_APP_SOCIAL_SERVICE}/userprofiles/${sender}/friends/${recipient}`,
+				{ relationship: type }
+			);
+			dispatch({ type: UPDATE_FRIENDS, payload: res.data.data });
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	return (
 		<AuthContext.Provider
@@ -154,7 +168,8 @@ const AuthState = props => {
 				loginUser,
 				logoutUser,
 				setUserStatus,
-				loadUserProfile
+				loadUserProfile,
+				updateRelationship
 			}}
 		>
 			{props.children}

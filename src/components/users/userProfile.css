@@ -15,31 +15,27 @@
   padding-top: 7rem;
 }
 
-
-
-.react-tabs__tab--selected {
-    background-color: var(--primary-soft) !important; }
-
-
 .react-tabs__tab {
-    border: none !important;
-    background-color: var(--primary-soft) !important;
-    }
-
-.react-tabs__tab-list {
-border: none !important
+  border: none !important;
+  background-color: white !important;
 }
- 
-.react-tabs__tab-panel {
-    padding: 1.5rem
-}
-
-
-.react-tabs__tab-panel {
-    background-color: var(--primary-soft);
-    height: 100vh;
+.react-tabs__tab--selected {
+  background-color: var(--primary-soft) !important;
 }
 
 .react-tabs__tab-list {
-    margin: 0 !important;
+  border: none !important;
+}
+
+.react-tabs__tab-panel {
+  padding: 1.5rem;
+}
+
+.react-tabs__tab-panel {
+  background-color: var(--primary-soft);
+  height: 100vh;
+}
+
+.react-tabs__tab-list {
+  margin: 0 !important;
 }

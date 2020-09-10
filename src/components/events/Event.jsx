@@ -73,7 +73,7 @@ const Event = ({ event }) => {
               className="btn btn-primary btn-marketing rounded-pill m-4"
               onClick={() => event.participant? alert("Cancel event") : alert("Take part")}
             >
-              {event.participant? "Cancel event" : "Take part"}
+              {event.participant? "Cancel event": "Take part"}
             </button>
           </div>
         </div>

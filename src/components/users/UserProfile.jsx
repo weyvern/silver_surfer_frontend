@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Spinner } from "react-rainbow-components";
 import "./userProfile.css";
 import 'react-tabs/style/react-tabs.css';
+import userPicture from '../../assets/img/login/placeholder.png';
 
 const UserProfile = () => {
   const [currentUser, setCurrentUser] = useState();
@@ -24,12 +25,17 @@ const UserProfile = () => {
     <div id="UserProfile">
       <div className="bg-primary-soft m-5 pb-3">
         <div className="custom_wrapper">
-          <img
+         {currentUser.profile_picture? (<img
             src={currentUser.profile_picture}
             alt={currentUser.username}
             className="profile_picture rounded-circle border"
             style={{ width: "12rem", height: "10rem" }}
-          />
+          />) :  (<img
+          src={userPicture}
+          alt={currentUser.username}
+          className="profile_picture rounded-circle border"
+          style={{ width: "12rem", height: "10rem" }}
+        />)}
         </div>
 
         <div className="profile_text d-flex justify-content-center w-100">

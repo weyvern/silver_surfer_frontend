@@ -239,7 +239,7 @@ const CreateUserProfile = () => {
 									htmlFor="leadCapDob"
 									name="dob"
 								>
-									Birthday
+									Birthday <sup>*</sup>
 								</label>
 								<input
 									className="form-control rounded-pill"

@@ -51,7 +51,7 @@ const EventListItemVertically = ({ event, onClick }) => {
                   </div>
                   <div className="px-1">
                     <FaCalendar className="fa-fw text-primary" />{" "}
-                    <span>{moment(event.date).format("MMM Do YY")}</span>
+                    <span>{moment(event.start).format("MMM Do YY")}</span>
                   </div>
                   <div className=" px-1">
                     {event.userPicture ? (

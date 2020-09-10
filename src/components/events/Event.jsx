@@ -5,6 +5,8 @@ import userPicture from "../../assets/img/login/placeholder.png";
 import { FaMapMarker, FaCalendar } from "react-icons/fa";
 
 const renderCategories = (categories) => {
+ 
+
   return categories.map((category) => (
     <div class="badge badge-pill badge-secondary font-weight-normal px-2 m-1 py-2">
       {category}
@@ -47,7 +49,7 @@ const Event = ({ event }) => {
                       alt="..."
                     />
                   )}
-                  Aariz Fischer // event.author
+                  {event.author}
                 </div>
               </div>
             </div>
@@ -60,24 +62,18 @@ const Event = ({ event }) => {
               {event.categories && renderCategories(event.categories)}
             </div>
             <h5 className="card-title text-truncate pt-2">
-              {event.title}I am a event title
+              {event.title}
             </h5>
             <p className="card-text">
-              {event.description}Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit. Maecenas porttitor congue massa. Fusce posuere,
-              magna sed pulvinar ultricies, purus Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit. Maecenas porttitor congue massa. Fusce posuere,
-              magna sed pulvinar ultricies, purus Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit. Maecenas porttitor congue massa. Fusce posuere,
-              magna sed pulvinar ultricies, purus 
+              {event.description}
             </p>
           </div>
           <div class="text-center">
             <button
               className="btn btn-primary btn-marketing rounded-pill m-4"
-              onClick={() => event.participant? alert("delete Event") : alert("add Event")}
+              onClick={() => event.participant? alert("Cancel event") : alert("Take part")}
             >
-              {event.participant? "Cancel event" : "Take part"}
+              {event.participant? "Cancel event": "Take part"}
             </button>
           </div>
         </div>
@@ -87,6 +83,3 @@ const Event = ({ event }) => {
 };
 
 export default Event;
-
-/*
- */

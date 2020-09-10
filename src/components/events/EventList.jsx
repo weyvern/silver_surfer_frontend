@@ -8,24 +8,27 @@ import { Spinner } from "react-rainbow-components";
 import EventListItemVertically from "./EventListItem_vertically";
 import Event from "./Event";
 import Modal from "./Modal";
-import AvatarGroup from "../styling/AvatarGroup";
 
 const events = [
   {
     title: "Board Game Night",
-    start: "2020-09-10",
-    end: "2020-09-10",
+    start: "2020-09-18",
+    end: "2020-09-18",
     _id: 1,
     description: "Let's play board games together and have a fun evening. Please bring all the games you want to play. We start at 8pm. I you can't participate please leave a message",
     location: "Berlin, DE",
     categories: ["games", "group"],
     author: "Lila Khedira",
-    participants: 6
+    participants: 6,
+    participant: true
   },
   {
     title: "Food Tour",
-    start: "2020-09-010",
-    end: "2020-09-010",
+    start: "2020-09-18",
+    end: "2020-09-18",
+    display: "background",
+    color: "#ff9f89",
+    participant: false,
     _id: 2,
     description: "This is the ddescription of event2",
     location: "New York, US",
@@ -35,8 +38,11 @@ const events = [
   },
   {
     title: "City Tour",
-    start: "2020-09-02",
-    end: "2020-09-04",
+    start: "2020-09-18",
+    end: "2020-09-18",
+    display: "background",
+    color: "#ff9f89",
+    participant: false,
     _id: 3,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
@@ -46,10 +52,11 @@ const events = [
   },
   {
     title: "See my city",
-    start: "2020-09-02",
-    end: "2020-09-04",
+    start: "2020-09-18",
+    end: "2020-09-18",
     display: "background",
     color: "#ff9f89",
+    participant: false,
     _id: 4,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
@@ -61,8 +68,7 @@ const events = [
     title: "Museum Tour",
     start: "2020-09-15",
     end: "2020-09-15",
-    display: "background",
-    color: "#ff9f89",
+    participant: true,
     _id: 5,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
@@ -76,6 +82,7 @@ const events = [
     end: "2020-09-04",
     display: "background",
     color: "#ff9f89",
+    participant: false,
     _id: 6,
     description: "This is the ddescription of event1",
     location: "Berlin, DE",
@@ -90,7 +97,8 @@ const initialState = { title: "Upcoming Events" };
 
 const EventList = () => {
   const [showModalEvent, setShowModalEvent] = useState({ show: false });
-  const [eventList, setEventList] = useState(initialState);
+  const [eventTitle, setEventTitle] = useState(initialState);
+  const [filteredEvents, setFilteredEvents] = useState(events);
   const history = useHistory();
 
   const renderEventsVertically = (events) => {
@@ -101,9 +109,11 @@ const EventList = () => {
   };
 
   const handleDateClick = (info) => {
-    setEventList({ ...eventList, title: `Upcoming Events on ${info.dateStr}` });
+    setEventTitle({ title: `Upcoming Events on ${info.dateStr}` });
     //filter eventlist according to set start date
-    alert("Clicked on: " + info.dateStr);
+   let filteredEvents = events.filter(event => event.start === info.dateStr);
+   setFilteredEvents(filteredEvents);
+    //alert("Clicked on: " + info.dateStr);
   };
 
   const hideModal = () => {
@@ -152,12 +162,12 @@ const EventList = () => {
       </div>
         </div>
         <div className="col ml-5" >
-          <h4>{eventList.title}</h4>
-		  <div id="test" style={{backgroundColor: "transparent"}}>{renderEventsVertically(events)}</div>
+          <h4>{eventTitle.title}</h4>
+		  <div id="test" style={{backgroundColor: "transparent"}}>{filteredEvents.length === 0? <div>No event on that day</div>: renderEventsVertically(filteredEvents)}</div>
        
         </div>
       </div>
-    <AvatarGroup />
+   
       <Modal show={showModalEvent.show} handleClose={hideModal}>
 	  <Event event={/*events.find((event) => event._id === showModalEvent.idx)*/ events[0]} />
       </Modal>{" "}
